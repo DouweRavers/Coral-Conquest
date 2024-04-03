@@ -1,0 +1,54 @@
+[gd_scene load_steps=10 format=3 uid="uid://p2mc7ap2stn1"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_p0whd"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_1sttm"]
+sky_material = SubResource("ProceduralSkyMaterial_p0whd")
+
+[sub_resource type="Environment" id="Environment_akjjj"]
+background_mode = 2
+sky = SubResource("Sky_1sttm")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="Gradient" id="Gradient_pbjrn"]
+colors = PackedColorArray(0.720467, 0.720468, 0.720467, 1, 0.473976, 0.473976, 0.473976, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_oikrs"]
+noise_type = 2
+frequency = 0.9
+fractal_octaves = 1
+cellular_jitter = 0.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_8ejjb"]
+color_ramp = SubResource("Gradient_pbjrn")
+noise = SubResource("FastNoiseLite_oikrs")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_remou"]
+albedo_texture = SubResource("NoiseTexture2D_8ejjb")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_4mcyy"]
+material = SubResource("StandardMaterial3D_remou")
+size = Vector2(100, 100)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_hu3ov"]
+data = PackedVector3Array(50, 0, 50, -50, 0, 50, 50, 0, -50, -50, 0, 50, -50, 0, -50, 50, 0, -50)
+
+[node name="TestEnvironment" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_akjjj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_4mcyy")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_hu3ov")

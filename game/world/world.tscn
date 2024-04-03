@@ -1,59 +1,21 @@
-[gd_scene load_steps=9 format=3 uid="uid://dlncxbyu6knnu"]
-
-[ext_resource type="Material" uid="uid://dd4lud77yeg3a" path="res://game/world/water_caustics.tres" id="1_golom"]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_pc3mn"]
-sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
-ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
-
-[sub_resource type="Sky" id="Sky_4x0qp"]
-sky_material = SubResource("ProceduralSkyMaterial_pc3mn")
-
-[sub_resource type="Environment" id="Environment_ymykm"]
-background_mode = 1
-background_color = Color(0.1932, 0.43332, 0.69, 1)
-sky = SubResource("Sky_4x0qp")
-ambient_light_color = Color(0.703326, 0.802181, 1, 1)
-tonemap_mode = 3
-glow_enabled = true
-fog_enabled = true
-fog_light_color = Color(0.2928, 0.414393, 0.61, 1)
-fog_light_energy = 1.5
-fog_sun_scatter = 1.0
-fog_density = 0.075
-fog_height_density = 16.0
+[gd_scene load_steps=4 format=3 uid="uid://dlncxbyu6knnu"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5sdlx"]
-next_pass = ExtResource("1_golom")
 albedo_color = Color(0.66, 0.66, 0.3696, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_6wst8"]
 material = SubResource("StandardMaterial3D_5sdlx")
 size = Vector2(100, 100)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w46ik"]
-next_pass = ExtResource("1_golom")
-albedo_color = Color(1, 0.08, 0.08, 1)
-
-[sub_resource type="TorusMesh" id="TorusMesh_5mhjw"]
-material = SubResource("StandardMaterial3D_w46ik")
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_50n4b"]
+data = PackedVector3Array(50, 0, 50, -50, 0, 50, 50, 0, -50, -50, 0, 50, -50, 0, -50, 50, 0, -50)
 
 [node name="world" type="Node3D"]
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
-shadow_enabled = true
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_ymykm")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("PlaneMesh_6wst8")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.16257, 0.383116, -1.76566)
-mesh = SubResource("TorusMesh_5mhjw")
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.907777, -0.0900712, -0.409667, 0, 0.976672, -0.214735, 0.419452, 0.194932, 0.886601, 0.624, 1.175, 2.209)
-far = 100.0
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_50n4b")

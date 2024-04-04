@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bxcso7cbkn013"]
+[gd_scene load_steps=4 format=3 uid="uid://bxcso7cbkn013"]
 
 [ext_resource type="Script" path="res://game/player/PlayerCamera.cs" id="1_u8n4n"]
 [ext_resource type="Script" path="res://game/player/Player.cs" id="1_w5irj"]
+[ext_resource type="PackedScene" uid="uid://b8lg47fbvu0wf" path="res://game/user_interface/minimap/minimap.tscn" id="3_yqiag"]
 
 [node name="Player" type="Node" node_paths=PackedStringArray("m_playerCamera")]
 script = ExtResource("1_w5irj")
@@ -12,7 +13,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 far = 100.0
 script = ExtResource("1_u8n4n")
 
-[node name="PlayerUI" type="HBoxContainer" parent="."]
+[node name="TempPlayerUI" type="HBoxContainer" parent="."]
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
@@ -20,8 +21,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="Button" type="Button" parent="PlayerUI"]
+[node name="Button" type="Button" parent="TempPlayerUI"]
 layout_mode = 2
 text = "House"
 
-[connection signal="pressed" from="PlayerUI/Button" to="." method="ShowBuildingTemplate"]
+[node name="Minimap" parent="." instance=ExtResource("3_yqiag")]
+
+[connection signal="pressed" from="TempPlayerUI/Button" to="." method="ShowBuildingTemplate"]

@@ -10,8 +10,8 @@ config_version=5
 
 [application]
 
-config/name="Guppy Town"
-config/features=PackedStringArray("4.2", "C#", "Forward Plus")
+config/name="Coral Conquest"
+config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]

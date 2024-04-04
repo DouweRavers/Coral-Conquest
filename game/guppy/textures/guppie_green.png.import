@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cbvvissw5fwnl"
-path.s3tc="res://.godot/imported/texture.png-3b35cd09d88d8e4f414f2141894de172.s3tc.ctex"
+uid="uid://ccbsp7eqcgp3h"
+path.s3tc="res://.godot/imported/guppie_green.png-28df9a7e2fb25926d5b38976d535d341.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://game/guppy/texture.png"
-dest_files=["res://.godot/imported/texture.png-3b35cd09d88d8e4f414f2141894de172.s3tc.ctex"]
+source_file="res://game/guppy/textures/guppie_green.png"
+dest_files=["res://.godot/imported/guppie_green.png-28df9a7e2fb25926d5b38976d535d341.s3tc.ctex"]
 
 [params]
 

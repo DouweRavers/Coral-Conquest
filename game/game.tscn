@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://c5fo0w1665jq1"]
+[gd_scene load_steps=9 format=3 uid="uid://c5fo0w1665jq1"]
 
 [ext_resource type="PackedScene" uid="uid://dlncxbyu6knnu" path="res://game/world/world.tscn" id="1_weg8k"]
 [ext_resource type="PackedScene" uid="uid://bxcso7cbkn013" path="res://game/player/player.tscn" id="2_hl1vf"]
 [ext_resource type="PackedScene" uid="uid://6mbsdp1r8vcl" path="res://game/guppy/guppy.glb" id="3_vbkho"]
+[ext_resource type="Material" uid="uid://b0lrf4toni7l1" path="res://game/guppy/materials/guppy_blue.tres" id="4_ka2ey"]
 
 [sub_resource type="Curve3D" id="Curve3D_rbjyc"]
 _data = {
@@ -10,6 +11,20 @@ _data = {
 "tilts": PackedFloat32Array(0.40609, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 }
 point_count = 20
+
+[sub_resource type="Animation" id="Animation_tfvwf"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PathFollow3D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
 
 [sub_resource type="Animation" id="Animation_pxrxn"]
 resource_name = "path"
@@ -24,20 +39,6 @@ tracks/0/keys = {
 "handle_modes": PackedInt32Array(0, 0),
 "points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0, 60)
-}
-
-[sub_resource type="Animation" id="Animation_tfvwf"]
-length = 0.001
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("PathFollow3D:progress_ratio")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_f81d6"]
@@ -57,13 +58,13 @@ transform = Transform3D(0.546499, -0.697501, 0.463499, 0.151865, 0.626822, 0.764
 curve = SubResource("Curve3D_rbjyc")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
-transform = Transform3D(0.237322, -0.091376, -0.967059, 7.45032e-09, 0.995527, -0.094061, 0.971395, 0.0223241, 0.236263, 0, 0, 0)
+transform = Transform3D(0.237322, -0.0913762, -0.967059, 7.45032e-09, 0.995527, -0.0940613, 0.971395, 0.0223242, 0.236263, 0, 0, 0)
 tilt_enabled = false
 
-[node name="guppy" parent="Path3D/PathFollow3D" instance=ExtResource("3_vbkho")]
+[node name="guppy2" parent="Path3D/PathFollow3D" instance=ExtResource("3_vbkho")]
 transform = Transform3D(-4.37114e-08, 0.866025, 0.5, 0, 0.5, -0.866025, -1, -3.78552e-08, -2.18557e-08, 0, 0, 0)
 
-[node name="Skeleton3D" parent="Path3D/PathFollow3D/guppy/Armature" index="0"]
+[node name="Skeleton3D" parent="Path3D/PathFollow3D/guppy2/Armature" index="0"]
 bones/1/rotation = Quaternion(1.79762e-07, 5.48023e-09, 0.0137248, 0.999906)
 bones/2/rotation = Quaternion(-0.0295815, 0.467805, -0.0375742, 0.882537)
 bones/3/rotation = Quaternion(-0.0231718, -6.87539e-08, -0.0171479, 0.999584)
@@ -79,22 +80,26 @@ bones/13/rotation = Quaternion(-0.0337535, -3.22696e-08, -0.25317, 0.966833)
 bones/14/rotation = Quaternion(-1.19117e-07, 4.90291e-07, -0.0533454, 0.998576)
 bones/15/rotation = Quaternion(-1.00632e-07, -2.71462e-08, 0.194426, 0.980917)
 bones/16/rotation = Quaternion(6.19992e-09, -2.03482e-08, -0.00463567, 0.999989)
-bones/17/rotation = Quaternion(-1.44801e-08, -7.7524e-09, 0.0110591, 0.999939)
+bones/17/rotation = Quaternion(-0.0212037, 0.00669864, 0.0110564, 0.999692)
 bones/18/rotation = Quaternion(-9.23094e-09, 4.65881e-09, 0.0237983, 0.999717)
 bones/19/rotation = Quaternion(-2.39125e-08, 4.39275e-09, 0.0602413, 0.998184)
 bones/20/rotation = Quaternion(-1.16318e-08, -4.83057e-08, 0.0329501, 0.999457)
 bones/21/rotation = Quaternion(-7.81026e-09, 4.38163e-08, 0.0224106, 0.999749)
-bones/22/rotation = Quaternion(-1.51748e-07, 2.36572e-07, 0.0320434, 0.999487)
-bones/23/rotation = Quaternion(1.81026e-07, -2.02906e-08, -0.0587753, 0.998271)
-bones/24/rotation = Quaternion(7.20434e-08, -4.98321e-08, -0.0938108, 0.99559)
-bones/26/rotation = Quaternion(-1.18428e-07, -1.03157e-07, 0.425467, 0.904974)
-bones/27/rotation = Quaternion(3.82817e-08, -4.7737e-08, -0.336812, 0.941572)
-bones/28/rotation = Quaternion(4.04475e-09, -2.08894e-08, -0.0963661, 0.995346)
-bones/29/rotation = Quaternion(1.40246e-08, -5.39999e-08, -0.396551, 0.918012)
-bones/30/rotation = Quaternion(1.00179e-07, -3.41639e-08, 0.0537632, 0.998554)
-bones/31/rotation = Quaternion(-4.58212e-08, 2.91931e-08, 0.296105, 0.955155)
+bones/22/rotation = Quaternion(-0.06393, 0.0219369, 0.0319701, 0.997201)
+bones/23/rotation = Quaternion(0.270821, -0.0849001, -0.0563582, 0.957221)
+bones/24/rotation = Quaternion(6.47026e-08, -4.73916e-08, -0.0938107, 0.99559)
+bones/25/rotation = Quaternion(0.206161, 0.00841185, -0.0956016, 0.9738)
+bones/26/rotation = Quaternion(-0.0500044, 0.0454731, 0.424494, 0.902904)
+bones/27/rotation = Quaternion(0.0830188, -0.0914942, -0.334232, 0.934358)
+bones/28/rotation = Quaternion(0.150683, -0.0626239, -0.0950745, 0.982005)
+bones/29/rotation = Quaternion(-0.10013, -0.0109838, -0.394534, 0.913343)
+bones/30/rotation = Quaternion(0.145982, 0.0729141, 0.0530426, 0.98517)
+bones/31/rotation = Quaternion(-4.2658e-08, 3.06428e-08, 0.296105, 0.955155)
 
-[node name="AnimationPlayer" parent="Path3D/PathFollow3D/guppy" index="1"]
+[node name="guppy" parent="Path3D/PathFollow3D/guppy2/Armature/Skeleton3D" index="0"]
+surface_material_override/0 = ExtResource("4_ka2ey")
+
+[node name="AnimationPlayer" parent="Path3D/PathFollow3D/guppy2" index="1"]
 autoplay = "Swim"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Path3D"]
@@ -103,4 +108,4 @@ libraries = {
 }
 autoplay = "path"
 
-[editable path="Path3D/PathFollow3D/guppy"]
+[editable path="Path3D/PathFollow3D/guppy2"]

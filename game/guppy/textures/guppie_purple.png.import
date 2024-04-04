@@ -2,20 +2,17 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bobqww1t41uqk"
-path.s3tc="res://.godot/imported/guppy_texture.png-7bb7cf8601c4b947ce6e98b7afda8aef.s3tc.ctex"
+uid="uid://edt74onske01"
+path.s3tc="res://.godot/imported/guppie_purple.png-aa655f23fc93b9579933c18314ace541.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={
-"md5": "4f9830efad13973a58d7bdb1e07df43d"
-}
 
 [deps]
 
-source_file="res://game/guppy/guppy_texture.png"
-dest_files=["res://.godot/imported/guppy_texture.png-7bb7cf8601c4b947ce6e98b7afda8aef.s3tc.ctex"]
+source_file="res://game/guppy/textures/guppie_purple.png"
+dest_files=["res://.godot/imported/guppie_purple.png-aa655f23fc93b9579933c18314ace541.s3tc.ctex"]
 
 [params]
 

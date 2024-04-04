@@ -1,10 +1,27 @@
-[gd_scene load_steps=2 format=3 uid="uid://bxcso7cbkn013"]
+[gd_scene load_steps=3 format=3 uid="uid://bxcso7cbkn013"]
 
 [ext_resource type="Script" path="res://game/player/PlayerCamera.cs" id="1_u8n4n"]
+[ext_resource type="Script" path="res://game/player/Player.cs" id="1_w5irj"]
 
-[node name="Player" type="Node"]
+[node name="Player" type="Node" node_paths=PackedStringArray("m_playerCamera")]
+script = ExtResource("1_w5irj")
+m_playerCamera = NodePath("PlayerCamera")
 
 [node name="PlayerCamera" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 far = 100.0
 script = ExtResource("1_u8n4n")
+
+[node name="PlayerUI" type="HBoxContainer" parent="."]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Button" type="Button" parent="PlayerUI"]
+layout_mode = 2
+text = "House"
+
+[connection signal="pressed" from="PlayerUI/Button" to="." method="ShowBuildingTemplate"]

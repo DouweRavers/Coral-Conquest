@@ -1,0 +1,19 @@
+
+{
+  "profiles": {
+	"Godot Debug": {
+	  "commandName": "Executable",
+	  "executablePath": "D:\\Program Files\\Godot\\godot NET 4.2\\godot.windows.editor.x86_64.mono.exe",
+	  "commandLineArgs": "--path . --verbose",
+	  "workingDirectory": ".",
+	  "nativeDebugging": true
+	},
+	"Godot Debug Player": {
+	  "commandName": "Executable",
+	  "executablePath": "D:\\Program Files\\Godot\\godot NET 4.2\\godot.windows.editor.x86_64.mono.exe",
+	  "commandLineArgs": "--upwards ./game/player/player.tscn --verbose",
+	  "workingDirectory": ".",
+	  "nativeDebugging": true
+	}
+  }
+}

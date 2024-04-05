@@ -1,17 +1,25 @@
-[gd_scene load_steps=4 format=3 uid="uid://bxcso7cbkn013"]
+[gd_scene load_steps=5 format=3 uid="uid://bxcso7cbkn013"]
 
-[ext_resource type="Script" path="res://game/player/PlayerCamera.cs" id="1_u8n4n"]
+[ext_resource type="Script" path="res://game/player/PlayerView.cs" id="1_u8n4n"]
 [ext_resource type="Script" path="res://game/player/Player.cs" id="1_w5irj"]
 [ext_resource type="PackedScene" uid="uid://b8lg47fbvu0wf" path="res://game/user_interface/minimap/minimap.tscn" id="3_yqiag"]
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_yg03i"]
+
 [node name="Player" type="Node" node_paths=PackedStringArray("m_playerCamera")]
 script = ExtResource("1_w5irj")
-m_playerCamera = NodePath("PlayerCamera")
+m_playerCamera = NodePath("PlayerView/PlayerCamera")
 
-[node name="PlayerCamera" type="Camera3D" parent="."]
+[node name="PlayerView" type="CharacterBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-far = 100.0
 script = ExtResource("1_u8n4n")
+m_sensitivity = 0.005
+
+[node name="PlayerCamera" type="Camera3D" parent="PlayerView"]
+far = 100.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerView"]
+shape = SubResource("SphereShape3D_yg03i")
 
 [node name="TempPlayerUI" type="HBoxContainer" parent="."]
 anchors_preset = 12

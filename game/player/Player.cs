@@ -11,7 +11,6 @@ public partial class Player : Node
     {
         var ray = new BuildingTemplateRay()
         {
-            Camera = m_playerCamera,
             BuildingTemplate = ResourceLoader.Load<PackedScene>("res://game/buildings/House.tscn").Instantiate<Node3D>()
         };
         AddChild(ray);

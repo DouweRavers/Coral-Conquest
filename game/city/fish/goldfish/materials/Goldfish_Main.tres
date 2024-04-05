@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bcjj5buv4u0tn"]
+
+[resource]
+resource_name = "Goldfish_Main"
+albedo_color = Color(0.568434, 0.391071, 0.196345, 1)
+metallic = 0.4
+roughness = 0.415087

@@ -1,0 +1,26 @@
+[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://dd4lud77yeg3a"]
+
+[ext_resource type="Shader" path="res://game/world/effects/water_caustics.gdshader" id="1_5rvsm"]
+
+[sub_resource type="Gradient" id="Gradient_83jqh"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_cu5hp"]
+noise_type = 2
+seed = 50
+frequency = 0.05
+fractal_type = 2
+fractal_octaves = 2
+fractal_lacunarity = 1.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_2nygn"]
+generate_mipmaps = false
+seamless = true
+color_ramp = SubResource("Gradient_83jqh")
+noise = SubResource("FastNoiseLite_cu5hp")
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_5rvsm")
+shader_parameter/size_scale = 0.1
+shader_parameter/time_scale = 0.02
+shader_parameter/noise_sample = SubResource("NoiseTexture2D_2nygn")

@@ -4,7 +4,6 @@ public partial class BuildingTemplateRay : RayCast3D
 {
     [Export] public float Length { get; set; } = 30f;
 
-    public Camera3D Camera { get; set; }
     public Node3D BuildingTemplate { set { AddChild(value); } }
 
     public BuildingTemplateRay()
@@ -12,38 +11,40 @@ public partial class BuildingTemplateRay : RayCast3D
         CollisionMask = 0x3; // first, second mask
     }
 
-    public override void _UnhandledInput(InputEvent @event)
+    public override void _Process(double delta)
     {
-        if (Camera is null) return;
-        HandleMouseMovementInput(@event);
-        HandleMousePressInput(@event);
+        ProcessInput();
+        ProcessBuildingPosition();
     }
 
-    private void HandleMouseMovementInput(InputEvent @event)
+    private void ProcessInput()
     {
-        if (@event is not InputEventMouseMotion motionEvent) return;
-        GlobalPosition = Camera.ProjectRayOrigin(motionEvent.Position);
-        TargetPosition = Camera.ProjectRayNormal(motionEvent.Position) * Length;
-        ForceRaycastUpdate();
-        if (IsColliding()) GetChild<Node3D>(0).GlobalPosition = GetCollisionPoint();
-        GetChild<Node3D>(0).Visible = ((CollisionObject3D)GetCollider()).GetCollisionLayerValue(2);
-    }
-    private void HandleMousePressInput(InputEvent @event)
-    {
-        if (@event is not InputEventMouseButton eventMouseButton) return;
-        switch (eventMouseButton.ButtonIndex)
+        if (Input.IsActionJustPressed("mouse_select"))
         {
-            case MouseButton.Left:
-                var child = GetChild<Node3D>(0);
-                child.Reparent((Node3D)GetCollider());
-                child.AddChild(new StaticBody3D());
-                child.GetChild<Node3D>(0).AddChild(new CollisionShape3D() { Shape = new BoxShape3D() });
-                QueueFree();
-                break;
-            case MouseButton.Right:
-                QueueFree();
-                break;
-            default: return;
+            var child = GetChild<Node3D>(0);
+            child.Reparent((Node3D)GetCollider());
+            child.AddChild(new StaticBody3D());
+            child.GetChild<Node3D>(0).AddChild(new CollisionShape3D() { Shape = new BoxShape3D() });
+            QueueFree();
         }
+
+        if (Input.IsActionJustPressed("mouse_deselect"))
+        {
+            GetTree().CreateTimer(0.1f).Timeout += () =>
+            {
+                if (!Input.IsActionPressed("mouse_deselect")) QueueFree();
+            };
+        }
+    }
+
+    private void ProcessBuildingPosition()
+    {
+        var mousePosition = GetViewport().GetMousePosition();
+        var camera = GetViewport().GetCamera3D();
+        GlobalPosition = camera.ProjectRayOrigin(mousePosition);
+        TargetPosition = camera.ProjectRayNormal(mousePosition) * Length;
+        if (IsColliding()) GetChild<Node3D>(0).GlobalPosition = GetCollisionPoint();
+        if (GetCollider() == null) return;
+        GetChild<Node3D>(0).Visible = ((CollisionObject3D)GetCollider()).GetCollisionLayerValue(2);
     }
 }

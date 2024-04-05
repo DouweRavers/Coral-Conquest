@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://ca4pcs5gpjuqy"]
+
+[ext_resource type="Texture2D" uid="uid://cflpabc8gba33" path="res://game/city/fish/guppy/textures/guppie_yellow.png" id="1_38d14"]
+[ext_resource type="Material" uid="uid://dd4lud77yeg3a" path="res://game/world/effects/water_caustics.tres" id="2_7jcfh"]
+
+[resource]
+resource_name = "GuppyMaterial"
+next_pass = ExtResource("2_7jcfh")
+cull_mode = 2
+albedo_texture = ExtResource("1_38d14")
+roughness = 0.5
+emission_enabled = true
+emission_energy_multiplier = 0.4
+emission_texture = ExtResource("1_38d14")

@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://mmenebrylhcb"]
+
+[resource]
+resource_name = "Eyes"
+albedo_color = Color(0.116606, 0.116606, 0.116606, 1)
+metallic = 0.4
+roughness = 0.415087

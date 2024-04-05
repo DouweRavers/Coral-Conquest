@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dlncxbyu6knnu" path="res://game/world/world.tscn" id="1_weg8k"]
 [ext_resource type="PackedScene" uid="uid://bxcso7cbkn013" path="res://game/player/player.tscn" id="2_hl1vf"]
-[ext_resource type="PackedScene" uid="uid://6mbsdp1r8vcl" path="res://game/fish/guppy/guppy.glb" id="3_x8yqr"]
+[ext_resource type="PackedScene" uid="uid://i1ujipcyipts" path="res://game/city/fish/goldfish/goldfish.glb" id="3_vmc3n"]
 
 [sub_resource type="Curve3D" id="Curve3D_rbjyc"]
 _data = {
@@ -60,11 +60,24 @@ curve = SubResource("Curve3D_rbjyc")
 transform = Transform3D(0.237322, -0.0913762, -0.967059, 7.45032e-09, 0.995527, -0.0940613, 0.971395, 0.0223242, 0.236263, 0, 0, 0)
 tilt_enabled = false
 
-[node name="guppy2" parent="Path3D/PathFollow3D" instance=ExtResource("3_x8yqr")]
-transform = Transform3D(-4.37114e-08, 0.866025, 0.5, 0, 0.5, -0.866025, -1, -3.78552e-08, -2.18557e-08, 0, 0, 0)
+[node name="goldfish" parent="Path3D/PathFollow3D" instance=ExtResource("3_vmc3n")]
+transform = Transform3D(-0.5, 0.866025, -8.74228e-08, 0.866025, 0.5, 0, 4.37114e-08, -7.57103e-08, -1, 0, 0, 0)
+
+[node name="Skeleton3D" parent="Path3D/PathFollow3D/goldfish/RootNode/Fish_Armature" index="0"]
+bones/0/rotation = Quaternion(-3.15043e-06, -3.15043e-06, -0.0388623, 0.999245)
+bones/1/rotation = Quaternion(-0.00848771, 0.0728575, -0.0260815, 0.996965)
+bones/2/rotation = Quaternion(-3.1225e-06, -3.12043e-06, -0.0199714, 0.999801)
+bones/3/rotation = Quaternion(-0.00798586, 0.000286666, -0.0294638, 0.999534)
+bones/4/rotation = Quaternion(0.00798678, -0.000202881, 0.0253941, 0.999646)
+bones/5/rotation = Quaternion(1.53131e-08, 2.06477e-08, 0.139615, 0.990206)
+
+[node name="AnimationPlayer" parent="Path3D/PathFollow3D/goldfish" index="1"]
+autoplay = "Fish_Armature|Swimming_Normal"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Path3D"]
 libraries = {
 "": SubResource("AnimationLibrary_f81d6")
 }
 autoplay = "path"
+
+[editable path="Path3D/PathFollow3D/goldfish"]

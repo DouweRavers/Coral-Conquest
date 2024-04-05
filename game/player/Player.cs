@@ -1,11 +1,17 @@
 using Godot;
+using GuppyEmpire;
 
 public partial class Player : Node
 {
     #region References
     [ExportCategory("References")]
-    [Export] Camera3D m_playerCamera;
+    [Export] PlayerView m_playerCamera;
     #endregion
+
+    public override void _Process(double delta)
+    {
+        
+    }
 
     public void ShowBuildingTemplate()
     {

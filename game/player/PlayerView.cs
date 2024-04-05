@@ -4,6 +4,12 @@ namespace GuppyEmpire;
 
 public partial class PlayerView : CharacterBody3D
 {
+    [ExportCategory("World bounds")]
+    [Export] float m_maxDistanceFromCenter = 10;
+    [Export] float m_maxHeight = 5;
+    [Export] float m_minHeight = 1;
+
+    [ExportCategory("Control properties")]
     [Export] float m_sensitivity = 0.01f;
     [Export] float m_speedScale = 1.17f;
     [Export] float m_boostSpeedMultiplier = 3.0f;
@@ -28,7 +34,9 @@ public partial class PlayerView : CharacterBody3D
                 GlobalBasis.Z * Input.GetAxis("move_forward", "move_back")
             ).Normalized();
         var boostInput = Input.IsActionPressed("move_sprint") ? m_boostSpeedMultiplier : 1;
-        _ = MoveAndCollide(directionInput * m_velocity * delta * boostInput);
+        var moveVector = directionInput * m_velocity * delta * boostInput;
+        moveVector = CheckOutOfBounds(moveVector);
+        _ = MoveAndCollide(moveVector);
     }
 
     private void ProcessOrientationInput(float delta)
@@ -45,5 +53,15 @@ public partial class PlayerView : CharacterBody3D
         Input.MouseMode = (isRightMouseHold ? Input.MouseModeEnum.Captured : Input.MouseModeEnum.Visible);
         float scroll = Input.GetAxis("camera_speed_down", "camera_speed_up");
         m_velocity = Mathf.Clamp(m_velocity += m_speedScale * scroll * delta, m_minSpeed, m_maxSpeed);
+    }
+
+    private Vector3 CheckOutOfBounds(Vector3 moveVector)
+    {
+        var expectedHeight = GlobalPosition.Y + moveVector.Y;
+        if (expectedHeight < m_minHeight || expectedHeight > m_maxHeight) moveVector.Y *= -1;
+        
+        var expectedPosition = GlobalPosition with { Y = 0 } + moveVector with { Y = 0 };
+        if (expectedPosition.Length() > m_maxDistanceFromCenter) moveVector = (-1 * moveVector) with { Y = 0 };
+        return moveVector;
     }
 }

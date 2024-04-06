@@ -5,8 +5,8 @@ namespace GuppyEmpire;
 public partial class PlayerView : CharacterBody3D
 {
     [ExportCategory("World bounds")]
-    [Export] float m_maxDistanceFromCenter = 10;
-    [Export] float m_maxHeight = 5;
+    [Export] float m_maxDistanceFromCenter = 500;
+    [Export] float m_maxHeight = 50;
     [Export] float m_minHeight = 1;
 
     [ExportCategory("Control properties")]
@@ -51,17 +51,16 @@ public partial class PlayerView : CharacterBody3D
     {
         bool isRightMouseHold = Input.IsActionPressed("camera_aim");
         Input.MouseMode = (isRightMouseHold ? Input.MouseModeEnum.Captured : Input.MouseModeEnum.Visible);
-        float scroll = Input.GetAxis("camera_speed_down", "camera_speed_up");
-        m_velocity = Mathf.Clamp(m_velocity += m_speedScale * scroll * delta, m_minSpeed, m_maxSpeed);
     }
 
     private Vector3 CheckOutOfBounds(Vector3 moveVector)
     {
         var expectedHeight = GlobalPosition.Y + moveVector.Y;
-        if (expectedHeight < m_minHeight || expectedHeight > m_maxHeight) moveVector.Y *= -1;
-        
+        if (expectedHeight < m_minHeight && moveVector.Y < 0) moveVector.Y = 0;
+        if (expectedHeight > m_maxHeight && moveVector.Y > 0) moveVector.Y = 0;
+
         var expectedPosition = GlobalPosition with { Y = 0 } + moveVector with { Y = 0 };
-        if (expectedPosition.Length() > m_maxDistanceFromCenter) moveVector = (-1 * moveVector) with { Y = 0 };
+        if (expectedPosition.Length() > m_maxDistanceFromCenter) moveVector = (-expectedPosition.Normalized()) with { Y = 0 };
         return moveVector;
     }
 }

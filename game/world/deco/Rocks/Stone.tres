@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cqw10qsq473s"]
+
+[resource]
+resource_name = "Stone"
+albedo_color = Color(0.5315, 0.533321, 0.50152, 1)
+metallic = 0.4
+roughness = 0.272166

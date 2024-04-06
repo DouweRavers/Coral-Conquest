@@ -1,83 +1,15 @@
-[gd_scene load_steps=8 format=3 uid="uid://c5fo0w1665jq1"]
+[gd_scene load_steps=5 format=3 uid="uid://c5fo0w1665jq1"]
 
 [ext_resource type="PackedScene" uid="uid://dlncxbyu6knnu" path="res://game/world/world.tscn" id="1_weg8k"]
+[ext_resource type="Script" path="res://game/Game.cs" id="1_xichb"]
 [ext_resource type="PackedScene" uid="uid://bxcso7cbkn013" path="res://game/player/player.tscn" id="2_hl1vf"]
-[ext_resource type="PackedScene" uid="uid://i1ujipcyipts" path="res://game/city/fish/goldfish/goldfish.glb" id="3_vmc3n"]
-
-[sub_resource type="Curve3D" id="Curve3D_rbjyc"]
-_data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 11.0504, 1.07482, -2.69973, 0, 0, 0, 0, 0, 0, 21.3507, -2.49299, -0.883562, 0, 0, 0, 0, 0, 0, 20.2347, -7.32375, 3.86637, 0, 0, 0, 0, 0, 0, 10.7248, -8.27135, 6.21119, 0, 0, 0, 0, 0, 0, 4.70833, -8.87086, 7.69465, 0, 0, 0, 0, 0, 0, -8.13709, -6.97644, 7.85216, 0, 0, 0, 0, 0, 0, -13.9393, -1.32477, 3.37611, 0, 0, 0, 0, 0, 0, -6.62784, 2.6535, -1.50783, 0, 0, 0, 0, 0, 0, -0.0983977, 4.89522, -4.62635, 0, 0, 0, 0, 0, 0, 6.30549, 3.47441, -4.2532, 0, 0, 0, 0, 0, 0, 8.18188, -0.124975, -1.12589, 0, 0, 0, 0, 0, 0, 0.872093, -4.41898, 4.05714, 0, 0, 0, 0, 0, 0, 28.6521, -8.4604, 3.66385, 0, 0, 0, 0, 0, 0, 33.5191, -2.61929, -2.61451, 0, 0, 0, 0, 0, 0, 29.1531, 0.127614, -4.5549, 0, 0, 0, 0, 0, 0, 22.2194, -0.156547, -3.23093, 0, 0, 0, 0, 0, 0, 16.0062, -3.12446, 0.528013, 0, 0, 0, 0, 0, 0, 9.52159, -4.16639, 2.50215, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-"tilts": PackedFloat32Array(0.40609, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-}
-point_count = 20
-
-[sub_resource type="Animation" id="Animation_tfvwf"]
-length = 0.001
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("PathFollow3D:progress_ratio")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-
-[sub_resource type="Animation" id="Animation_pxrxn"]
-resource_name = "path"
-length = 60.0
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("PathFollow3D:progress_ratio")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 60)
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_f81d6"]
-_data = {
-"RESET": SubResource("Animation_tfvwf"),
-"path": SubResource("Animation_pxrxn")
-}
+[ext_resource type="PackedScene" uid="uid://cpj78j5jdx6bo" path="res://game/city/city.tscn" id="3_gknjl"]
 
 [node name="Game" type="Node"]
+script = ExtResource("1_xichb")
 
 [node name="World" parent="." instance=ExtResource("1_weg8k")]
 
 [node name="Player" parent="." instance=ExtResource("2_hl1vf")]
 
-[node name="Path3D" type="Path3D" parent="."]
-transform = Transform3D(0.546499, -0.697501, 0.463499, 0.151865, 0.626822, 0.76422, -0.823575, -0.347256, 0.448483, 0.00120878, 4.94916, -0.0541735)
-curve = SubResource("Curve3D_rbjyc")
-
-[node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
-transform = Transform3D(0.237322, -0.0913762, -0.967059, 7.45032e-09, 0.995527, -0.0940613, 0.971395, 0.0223242, 0.236263, 0, 0, 0)
-tilt_enabled = false
-
-[node name="goldfish" parent="Path3D/PathFollow3D" instance=ExtResource("3_vmc3n")]
-transform = Transform3D(-0.5, 0.866025, -8.74228e-08, 0.866025, 0.5, 0, 4.37114e-08, -7.57103e-08, -1, 0, 0, 0)
-
-[node name="Skeleton3D" parent="Path3D/PathFollow3D/goldfish/RootNode/Fish_Armature" index="0"]
-bones/0/rotation = Quaternion(-3.15043e-06, -3.15043e-06, -0.0388623, 0.999245)
-bones/1/rotation = Quaternion(-0.00848771, 0.0728575, -0.0260815, 0.996965)
-bones/2/rotation = Quaternion(-3.1225e-06, -3.12043e-06, -0.0199714, 0.999801)
-bones/3/rotation = Quaternion(-0.00798586, 0.000286666, -0.0294638, 0.999534)
-bones/4/rotation = Quaternion(0.00798678, -0.000202881, 0.0253941, 0.999646)
-bones/5/rotation = Quaternion(1.53131e-08, 2.06477e-08, 0.139615, 0.990206)
-
-[node name="AnimationPlayer" parent="Path3D/PathFollow3D/goldfish" index="1"]
-autoplay = "Fish_Armature|Swimming_Normal"
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Path3D"]
-libraries = {
-"": SubResource("AnimationLibrary_f81d6")
-}
-autoplay = "path"
-
-[editable path="Path3D/PathFollow3D/goldfish"]
+[node name="City" parent="." instance=ExtResource("3_gknjl")]

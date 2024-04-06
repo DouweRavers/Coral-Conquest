@@ -6,4 +6,7 @@
     <EnableDynamicLoading>true</EnableDynamicLoading>
     <RootNamespace>GuppyEmpire</RootNamespace>
   </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="game\city\buildings\farm\" />
+  </ItemGroup>
 </Project>

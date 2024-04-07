@@ -2,13 +2,10 @@ using Godot;
 
 public partial class Citizen : Fish
 {
-    public enum JobTypes { VILLAGER, FARMER }
     public JobTypes JobType { get; private set; }
     public House Home { get; private set; }
 
     Job m_job;
-
-    AnimationPlayer m_waypointAnimation;
 
     #region References
     AnimationTree AnimationTree { get { return GetNode<AnimationTree>("AnimationTree"); } }
@@ -16,15 +13,17 @@ public partial class Citizen : Fish
 
     public void SetIndicator(bool enable) { GetNode<Node3D>("Indicator").Visible = enable; }
 
-    public void SetJobType(JobTypes jobType, Building building = null)
+    public void SetJobType(JobTypes jobType, Workplace building = null)
     {
         JobType = jobType;
         m_job?.Leave();
         m_job = jobType switch
         {
             JobTypes.VILLAGER => null,
-            JobTypes.FARMER => new FarmJob(this, (Farm)building),
-            _ => null
+            JobTypes.FARMER => new FarmJob(this, building),
+            JobTypes.WOODCUTTER => new WoodcutterJob(this, building),
+            JobTypes.BUILDER => new BuilderJob(this, building),
+            _ => throw new System.Exception()
         };
         Reskin(jobType);
     }
@@ -64,7 +63,8 @@ public partial class Citizen : Fish
         {
             JobTypes.VILLAGER => "res://game/fish/citizen/villager/villager.tscn",
             JobTypes.FARMER => "res://game/fish/citizen/farmer/farmer.tscn",
-            _ => "res://game/fish/citizen/villager/villager.tscn"
+            JobTypes.WOODCUTTER => "res://game/fish/citizen/woodcutter/woodcutter.tscn",
+            _ => throw new System.Exception()
         }).Instantiate();
         AddChild(newSkin);
         newSkin.Name = "Skin";

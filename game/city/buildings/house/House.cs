@@ -7,10 +7,10 @@ public partial class House : Building
     public List<Citizen> Inhabitants { get; private set; } = new();
     public int FoodStorage { get; private set; } = 10;
 
-    public void AddFood(int food)
+    public void AddFood()
     {
         if (FoodStorage >= 10) return;
-        FoodStorage += food;
+        FoodStorage++;
         UpdateHUD();
     }
 
@@ -47,10 +47,5 @@ public partial class House : Building
         GetNode<Node3D>("Indicator").Visible = false;
     }
 
-    private void UpdateHUD()
-    {
-        var hud = GetNode<Control>("HUD/SubViewport/HouseHUD");
-        hud.GetNode<ProgressBar>("ProgressBar").Value = FoodStorage;
-        hud.GetNode<CitizenViewer>("InhabitansViewer").ShowCitizens(Inhabitants.ToArray(), 4);
-    }
+    private void UpdateHUD() => UpdateHUD(Inhabitants.ToArray(), 4, FoodStorage);
 }

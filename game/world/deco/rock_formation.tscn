@@ -170,63 +170,54 @@ shape = SubResource("BoxShape3D_k8h6j")
 [node name="Resource_Rock_3" type="MeshInstance3D" parent="."]
 transform = Transform3D(4387.3, 0, 0, 0, -0.000191775, 4387.3, 0, -4387.3, -0.000191775, 13.8366, 8.07595e-07, -0.0844236)
 material_overlay = ExtResource("1_msxn1")
-visibility_range_end = 80.0
 mesh = SubResource("ArrayMesh_v5ga4")
 skeleton = NodePath("")
 
 [node name="Resource_Rock_6" type="MeshInstance3D" parent="."]
 transform = Transform3D(4387.3, 0, 0, 0, -0.000191775, 4387.3, 0, -4387.3, -0.000191775, 38.1856, 8.07595e-07, -5.71623)
 material_overlay = ExtResource("1_msxn1")
-visibility_range_end = 80.0
 mesh = SubResource("ArrayMesh_v5ga4")
 skeleton = NodePath("")
 
 [node name="Resource_Rock_1" type="MeshInstance3D" parent="."]
 transform = Transform3D(4387.3, 0, 0, 0, -0.000523007, 4387.3, 0, -4387.3, -0.000523007, -22.3763, -3.37646e-06, 1.29371)
 material_overlay = ExtResource("1_msxn1")
-visibility_range_end = 80.0
 mesh = SubResource("ArrayMesh_v7mll")
 skeleton = NodePath("")
 
 [node name="Resource_Rock_5" type="MeshInstance3D" parent="."]
 transform = Transform3D(536.809, 2599.01, 0.000309826, 0, -0.000316365, 2653.86, 2599.01, -536.809, -6.39926e-05, 24.9589, -3.37646e-06, -13.8052)
 material_overlay = ExtResource("1_msxn1")
-visibility_range_end = 80.0
 mesh = SubResource("ArrayMesh_v7mll")
 skeleton = NodePath("")
 
 [node name="Resource_Rock_7" type="MeshInstance3D" parent="."]
 transform = Transform3D(2601.64, -523.92, -6.24562e-05, 0, -0.000316365, 2653.86, -523.92, -2601.64, -0.000310139, 32.4172, -3.37646e-06, 5.61301)
 material_overlay = ExtResource("1_msxn1")
-visibility_range_end = 80.0
 mesh = SubResource("ArrayMesh_v7mll")
 skeleton = NodePath("")
 
 [node name="Resource_Rock_4" type="MeshInstance3D" parent="."]
 transform = Transform3D(-2193.65, 3799.51, 0.000452937, 0, -0.000523007, 4387.3, 3799.51, 2193.65, 0.000261504, 63.6237, -3.37646e-06, -2.70629)
 material_overlay = ExtResource("1_msxn1")
-visibility_range_end = 80.0
 mesh = SubResource("ArrayMesh_v7mll")
 skeleton = NodePath("")
 
 [node name="Resource_Rock_2" type="MeshInstance3D" parent="."]
 transform = Transform3D(2201.21, -3795.14, -0.000165891, -9.29047e-19, -0.000191775, 4387.3, -3795.14, -2201.21, -9.62177e-05, -3.02845, 8.07595e-07, -9.53095)
 material_overlay = ExtResource("1_msxn1")
-visibility_range_end = 80.0
 mesh = SubResource("ArrayMesh_bswkw")
 skeleton = NodePath("")
 
 [node name="Rock" type="MeshInstance3D" parent="."]
 transform = Transform3D(4387.3, 0, 0, 0, -0.000191775, 4387.3, 0, -4387.3, -0.000191775, -4.77126, 8.07595e-07, 8.42135)
 material_overlay = ExtResource("1_msxn1")
-visibility_range_end = 80.0
 mesh = SubResource("ArrayMesh_rw20l")
 skeleton = NodePath("")
 
 [node name="Rock2" type="MeshInstance3D" parent="."]
 transform = Transform3D(4387.3, 0, 0, 0, -0.000191775, 4387.3, 0, -4387.3, -0.000191775, 51.0748, 8.07595e-07, -15.9814)
 material_overlay = ExtResource("1_msxn1")
-visibility_range_end = 80.0
 mesh = SubResource("ArrayMesh_rw20l")
 skeleton = NodePath("")
 

@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dtpookh6f56km"]
+
+[ext_resource type="Script" path="res://game/Game.cs" id="1_bv480"]
+[ext_resource type="PackedScene" uid="uid://bxcso7cbkn013" path="res://game/player/player.tscn" id="2_jyyc2"]
+
+[node name="Game" type="Node"]
+script = ExtResource("1_bv480")
+
+[node name="Player" parent="." instance=ExtResource("2_jyyc2")]
+
+[node name="PlayerView" parent="Player" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 3, 5)
+
+[editable path="Player"]

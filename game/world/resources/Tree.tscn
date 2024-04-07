@@ -1,0 +1,150 @@
+[gd_scene load_steps=8 format=3 uid="uid://bhiutgc1kr3t0"]
+
+[ext_resource type="Script" path="res://game/world/resources/Tree.cs" id="1_byggc"]
+[ext_resource type="PackedScene" uid="uid://cdejy6sxinwh6" path="res://game/world/deco/Plants/CoralTree.tscn" id="1_j8wjy"]
+[ext_resource type="PackedScene" uid="uid://bsxqyj2ebltgo" path="res://game/world/deco/Plants/Plant2.tscn" id="1_kewy4"]
+
+[sub_resource type="Animation" id="Animation_cw5jx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("trunk:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("trunk:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.17923, 4.45652, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("trunk:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(2.821, 4.078, 4)]
+}
+
+[sub_resource type="Animation" id="Animation_2wgrc"]
+resource_name = "tree_cut"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("trunk:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, -1.51552)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("trunk:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.896138, 4.76045, 0), Vector3(4.65395, -0.543478, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_k4fgs"]
+resource_name = "tree_grow"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("trunk:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.6, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(4.65395, -0.543478, 0), Vector3(0, 1.13194, 0), Vector3(0.19493, 0.907115, 0), Vector3(0.97465, 4.71221, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("trunk:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector3(0, 0, -1.51552), Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("trunk:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(2.821, 4.078, 4), Vector3(0, 0, 0), Vector3(2.821, 4.078, 4)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tvw84"]
+_data = {
+"RESET": SubResource("Animation_cw5jx"),
+"tree_cut": SubResource("Animation_2wgrc"),
+"tree_grow": SubResource("Animation_k4fgs")
+}
+
+[node name="Tree" type="Node3D"]
+script = ExtResource("1_byggc")
+
+[node name="trunk" parent="." instance=ExtResource("1_j8wjy")]
+transform = Transform3D(2.821, 0, 0, 0, 4.078, 0, 0, 0, 4, 1.17923, 4.45652, 0)
+
+[node name="node_id63" parent="trunk" instance=ExtResource("1_kewy4")]
+transform = Transform3D(0.266183, 0.386892, -0.122963, -0.280399, 0.180839, -0.0379986, 0.0158246, 0.0936517, 0.328923, 0.570613, 0.607802, -0.695567)
+
+[node name="node_id68" parent="trunk" instance=ExtResource("1_kewy4")]
+transform = Transform3D(0.396878, 0.541648, -0.181615, -0.418077, 0.253174, -0.056124, 0.0235944, 0.131112, 0.485818, 0.014262, -0.159534, 0.0958026)
+
+[node name="node_id64" parent="trunk" instance=ExtResource("1_kewy4")]
+transform = Transform3D(0.266183, 0.386892, -0.122963, -0.280399, 0.180839, -0.0379986, 0.0158246, 0.0936517, 0.328923, -0.616284, -0.16852, 0.505058)
+
+[node name="node_id65" parent="trunk" instance=ExtResource("1_kewy4")]
+transform = Transform3D(-0.266183, -0.386892, 0.122963, -0.280399, 0.180839, -0.0379986, -0.0158246, -0.0936517, -0.328923, -0.342107, 0.669958, 0.484692)
+
+[node name="node_id69" parent="trunk" instance=ExtResource("1_kewy4")]
+transform = Transform3D(-0.424369, 0.0237132, 0.234536, 0.10481, 0.274938, 0.161846, -0.127362, 0.195867, -0.250253, -0.10768, 0.58311, -0.0122242)
+
+[node name="node_id66" parent="trunk" instance=ExtResource("1_kewy4")]
+transform = Transform3D(-0.266183, -0.386892, 0.122963, -0.280399, 0.180839, -0.0379986, -0.0158246, -0.0936517, -0.328923, 0.135566, -0.264113, -0.112431)
+
+[node name="node_id67" parent="trunk" instance=ExtResource("1_kewy4")]
+transform = Transform3D(-0.00709442, -0.225292, 0.289943, -0.252126, -0.0213526, -0.0227606, 0.0314213, -0.203382, -0.157263, -0.255371, 0.483672, 0.103229)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_tvw84")
+}

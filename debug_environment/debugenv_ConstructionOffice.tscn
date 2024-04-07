@@ -1,0 +1,50 @@
+[gd_scene load_steps=10 format=3 uid="uid://bu5370jthwr8v"]
+
+[ext_resource type="Script" path="res://game/Game.cs" id="1_sllgv"]
+[ext_resource type="PackedScene" uid="uid://bxcso7cbkn013" path="res://game/player/player.tscn" id="2_l42c4"]
+[ext_resource type="PackedScene" uid="uid://bmaxka162il1m" path="res://debug_environment/simple_world.tscn" id="3_b3f86"]
+[ext_resource type="Script" path="res://game/world/World.cs" id="4_trio1"]
+[ext_resource type="PackedScene" uid="uid://bqv05go3gem4b" path="res://game/world/resources/forest.tscn" id="5_c6fof"]
+[ext_resource type="Script" path="res://game/city/City.cs" id="6_0arhp"]
+[ext_resource type="PackedScene" uid="uid://32ycoqj88oxr" path="res://game/fish/citizen/citizen.tscn" id="7_2vysi"]
+[ext_resource type="PackedScene" uid="uid://dlhexmerrypi5" path="res://game/city/buildings/lodge/lodge.tscn" id="7_dquou"]
+[ext_resource type="PackedScene" uid="uid://br2nnxe5gw2m6" path="res://game/city/building_menu/builder_menu.tscn" id="8_bp4ij"]
+
+[node name="Game" type="Node"]
+script = ExtResource("1_sllgv")
+
+[node name="Player" parent="." instance=ExtResource("2_l42c4")]
+
+[node name="PlayerView" parent="Player" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 5.28902, 8.9647)
+
+[node name="PlayerCamera" parent="Player/PlayerView" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 2.98023e-08, 0, -2.98023e-08, 1, 0, 4, 0)
+
+[node name="World" parent="." instance=ExtResource("3_b3f86")]
+script = ExtResource("4_trio1")
+
+[node name="Resources" type="Node" parent="World"]
+
+[node name="Forest" parent="World/Resources" instance=ExtResource("5_c6fof")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -11)
+
+[node name="City" type="Node" parent="."]
+script = ExtResource("6_0arhp")
+
+[node name="Citizens" type="Node" parent="City"]
+
+[node name="Buildings" type="Node" parent="City"]
+
+[node name="Lodge" parent="City/Buildings" instance=ExtResource("7_dquou")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.74012, 0, -17.4458)
+
+[node name="BuilderMenu" parent="City" instance=ExtResource("8_bp4ij")]
+
+[node name="Citizen" parent="." instance=ExtResource("7_2vysi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.2134, 5, -9.78078)
+
+[node name="Citizen2" parent="." instance=ExtResource("7_2vysi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.0647, 5, -8.2837)
+
+[editable path="Player"]

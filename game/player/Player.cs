@@ -10,7 +10,7 @@ public partial class Player : Node
         SetPicker(new DefaultPicker());
     }
 
-    public void SetBuildingPicker(Building.BuildingType buildingType)
+    public void SetBuildingPicker(Workplace.BuildingType buildingType)
     {
         var buildingPicker = new BuildingPicker();
         buildingPicker.SetBuilding(buildingType);

@@ -16,8 +16,7 @@ public partial class CitizenPicker : Picker
         if (GetCollider() is not CollisionObject3D collsionObject) return;
         if (collsionObject.GetCollisionLayerValue(2)) OnFloorClick();
         else if (collsionObject is House house) OnHouseClick(house);
-        else if (collsionObject is Farm farm) OnFarmClick(farm);
-        else if (collsionObject is Fish) ; // do fish
+        else if (collsionObject is Workplace workplace) OnWorkClick(workplace);
     }
 
     protected override void OnDeselect()
@@ -44,12 +43,12 @@ public partial class CitizenPicker : Picker
         });
     }
 
-    private void OnFarmClick(Farm farm)
+    private void OnWorkClick(Workplace workplace)
     {
-        Game.Instance.Player.ShowWaypoint(farm.GlobalPosition);
-        Citizen.GoTo(farm.GlobalPosition, () =>
+        Game.Instance.Player.ShowWaypoint(workplace.GlobalPosition);
+        Citizen.GoTo(workplace.GlobalPosition, () =>
         {
-            farm.AddWorker(Citizen);
+            workplace.AddWorker(Citizen);
             Game.Instance.Player.HideWaypoint();
         });
     }

@@ -2,7 +2,7 @@ using Godot;
 
 public partial class BuildingTemplate : MeshInstance3D
 {
-    [Export] Building.BuildingType m_buildingType;
+    [Export] Workplace.BuildingType m_buildingType;
     bool m_placeable;
 
     #region References

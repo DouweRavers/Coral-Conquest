@@ -1,20 +1,17 @@
-[gd_scene load_steps=9 format=3 uid="uid://dlncxbyu6knnu"]
+[gd_scene load_steps=8 format=3 uid="uid://dlncxbyu6knnu"]
 
+[ext_resource type="Script" path="res://game/world/World.cs" id="1_5ko7u"]
 [ext_resource type="Environment" uid="uid://215iivnl60mc" path="res://vfx/underwater/UnderwaterEnv.tres" id="1_epucc"]
-[ext_resource type="Material" uid="uid://dd4lud77yeg3a" path="res://vfx/underwater/water_caustics.tres" id="2_502oc"]
-[ext_resource type="PackedScene" uid="uid://c5eh7bw11uoro" path="res://game/world/floor.glb" id="2_f1tar"]
 [ext_resource type="PackedScene" uid="uid://b1lqqe3xgrnta" path="res://game/world/deco/rock_formation.tscn" id="3_kdgex"]
+[ext_resource type="PackedScene" uid="uid://dq55wi462pphb" path="res://game/world/floor.tscn" id="3_m0l6t"]
 [ext_resource type="NavigationMesh" uid="uid://bjminj53hh5bp" path="res://game/world/navmesh.tres" id="4_lxvk3"]
-
-[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_lf6wm"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cea05"]
-albedo_color = Color(0.89, 0.764658, 0.3115, 1)
+[ext_resource type="PackedScene" uid="uid://bqv05go3gem4b" path="res://game/world/resources/forest.tscn" id="6_xq77n"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_y5x0i"]
 size = Vector2(500, 500)
 
 [node name="World" type="Node"]
+script = ExtResource("1_5ko7u")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866024, -0.433016, 0.250001, 0, 0.499998, 0.866026, -0.500003, 0.749999, -0.43301, 0, 27.8105, 0)
@@ -23,23 +20,7 @@ shadow_enabled = true
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("1_epucc")
 
-[node name="Floor" type="StaticBody3D" parent="."]
-collision_layer = 3
-axis_lock_linear_x = true
-axis_lock_linear_y = true
-axis_lock_linear_z = true
-axis_lock_angular_x = true
-axis_lock_angular_y = true
-axis_lock_angular_z = true
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
-shape = SubResource("WorldBoundaryShape3D_lf6wm")
-
-[node name="floor" parent="Floor" instance=ExtResource("2_f1tar")]
-
-[node name="Plane" parent="Floor/floor" index="0"]
-material_overlay = ExtResource("2_502oc")
-surface_material_override/0 = SubResource("StandardMaterial3D_cea05")
+[node name="Floor" parent="." instance=ExtResource("3_m0l6t")]
 
 [node name="NavigationRegion" type="NavigationRegion3D" parent="."]
 navigation_mesh = ExtResource("4_lxvk3")
@@ -122,4 +103,78 @@ transform = Transform3D(-0.815804, 2.53449e-09, 0.578328, -4.36678e-09, 1, -1.05
 [node name="RockFormation24" parent="NavigationRegion" instance=ExtResource("3_kdgex")]
 transform = Transform3D(-0.882324, 1.10876e-09, 0.470642, -4.36679e-09, 1, -1.05424e-08, -0.470642, -1.1357e-08, -0.882324, -68.8737, -1.52588e-05, 51.2793)
 
-[editable path="Floor/floor"]
+[node name="Resources" type="Node" parent="."]
+
+[node name="Forest" type="Node" parent="Resources"]
+
+[node name="Forest" parent="Resources/Forest" instance=ExtResource("6_xq77n")]
+transform = Transform3D(0.883316, 0, 0.468778, 0, 1, 0, -0.468778, 0, 0.883316, -6.62716, -0.499446, 1.75393)
+
+[node name="Forest2" parent="Resources/Forest" instance=ExtResource("6_xq77n")]
+transform = Transform3D(0.994305, 0, -0.106576, 0, 1, 0, 0.106576, 0, 0.994305, -21.0232, -0.499446, -59.4798)
+
+[node name="Forest3" parent="Resources/Forest" instance=ExtResource("6_xq77n")]
+transform = Transform3D(0.994305, 0, -0.106576, 0, 1, 0, 0.106576, 0, 0.994305, -8.45198, -0.499446, -47.5169)
+
+[node name="Forest4" parent="Resources/Forest" instance=ExtResource("6_xq77n")]
+transform = Transform3D(0.994305, 0, -0.106576, 0, 1, 0, 0.106576, 0, 0.994305, 29.4643, -0.499446, 52.8496)
+
+[node name="Forest5" parent="Resources/Forest" instance=ExtResource("6_xq77n")]
+transform = Transform3D(0.994305, 0, -0.106576, 0, 1, 0, 0.106576, 0, 0.994305, -41.9075, -0.499446, 95.8349)
+
+[node name="Forest6" parent="Resources/Forest" instance=ExtResource("6_xq77n")]
+transform = Transform3D(0.994305, 0, -0.106576, 0, 1, 0, 0.106576, 0, 0.994305, -66.6443, -0.499446, 95.0238)
+
+[node name="Forest7" parent="Resources/Forest" instance=ExtResource("6_xq77n")]
+transform = Transform3D(0.994305, 0, -0.106576, 0, 1, 0, 0.106576, 0, 0.994305, -61.1698, -0.499446, 110.839)
+
+[node name="Forest8" parent="Resources/Forest" instance=ExtResource("6_xq77n")]
+transform = Transform3D(0.994305, 0, -0.106576, 0, 1, 0, 0.106576, 0, 0.994305, 81.371, -0.499446, 121.18)
+
+[node name="Forest9" parent="Resources/Forest" instance=ExtResource("6_xq77n")]
+transform = Transform3D(0.994305, 0, -0.106576, 0, 1, 0, 0.106576, 0, 0.994305, 47.9155, -0.499446, 133.143)
+
+[node name="Forest10" parent="Resources/Forest" instance=ExtResource("6_xq77n")]
+transform = Transform3D(0.994305, 0, -0.106576, 0, 1, 0, 0.106576, 0, 0.994305, -86.7069, -0.499446, 89.6563)
+
+[node name="Forest11" parent="Resources/Forest" instance=ExtResource("6_xq77n")]
+transform = Transform3D(0.994305, 0, -0.106576, 0, 1, 0, 0.106576, 0, 0.994305, -164.752, -0.499446, -27.8842)
+
+[node name="Forest12" parent="Resources/Forest" instance=ExtResource("6_xq77n")]
+transform = Transform3D(0.994305, 0, -0.106576, 0, 1, 0, 0.106576, 0, 0.994305, -159.785, -0.499446, -12.0387)
+
+[node name="Forest13" parent="Resources/Forest" instance=ExtResource("6_xq77n")]
+transform = Transform3D(0.994305, 0, -0.106576, 0, 1, 0, 0.106576, 0, 0.994305, -154.109, -0.499446, 2.62431)
+
+[node name="Forest14" parent="Resources/Forest" instance=ExtResource("6_xq77n")]
+transform = Transform3D(0.306244, 0, -0.951953, 0, 1, 0, 0.951953, 0, 0.306244, -140.392, -0.499446, -10.6197)
+
+[node name="Forest15" parent="Resources/Forest" instance=ExtResource("6_xq77n")]
+transform = Transform3D(0.306244, 0, -0.951953, 0, 1, 0, 0.951953, 0, 0.306244, -115.087, -0.499446, -117.991)
+
+[node name="Forest16" parent="Resources/Forest" instance=ExtResource("6_xq77n")]
+transform = Transform3D(0.306244, 0, -0.951953, 0, 1, 0, 0.951953, 0, 0.306244, -118.871, -0.499446, -101.199)
+
+[node name="Forest17" parent="Resources/Forest" instance=ExtResource("6_xq77n")]
+transform = Transform3D(0.306244, 0, -0.951953, 0, 1, 0, 0.951953, 0, 0.306244, -95.2209, -0.499446, -113.024)
+
+[node name="Forest18" parent="Resources/Forest" instance=ExtResource("6_xq77n")]
+transform = Transform3D(0.306244, 0, -0.951953, 0, 1, 0, 0.951953, 0, 0.306244, 45.0236, -0.499446, -159.378)
+
+[node name="Forest19" parent="Resources/Forest" instance=ExtResource("6_xq77n")]
+transform = Transform3D(0.306244, 0, -0.951953, 0, 1, 0, 0.951953, 0, 0.306244, 27.2861, -0.499446, -153.229)
+
+[node name="Forest20" parent="Resources/Forest" instance=ExtResource("6_xq77n")]
+transform = Transform3D(-0.997442, 0, -0.0714802, 0, 1, 0, 0.0714802, 0, -0.997442, 0.0886059, -0.499446, -157.723)
+
+[node name="Forest21" parent="Resources/Forest" instance=ExtResource("6_xq77n")]
+transform = Transform3D(-0.997442, 0, -0.0714802, 0, 1, 0, 0.0714802, 0, -0.997442, -36.5689, -0.499446, -167.183)
+
+[node name="Forest22" parent="Resources/Forest" instance=ExtResource("6_xq77n")]
+transform = Transform3D(-0.997442, 0, -0.0714802, 0, 1, 0, 0.0714802, 0, -0.997442, -22.1424, -0.499446, -157.959)
+
+[node name="Forest23" parent="Resources/Forest" instance=ExtResource("6_xq77n")]
+transform = Transform3D(-0.997442, 0, -0.0714802, 0, 1, 0, 0.0714802, 0, -0.997442, 140.333, -0.499446, -67.8527)
+
+[node name="Forest24" parent="Resources/Forest" instance=ExtResource("6_xq77n")]
+transform = Transform3D(-0.484809, 0, -0.87462, 0, 1, 0, 0.87462, 0, -0.484809, 133.948, -0.499446, -78.9682)

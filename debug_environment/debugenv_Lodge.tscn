@@ -1,0 +1,35 @@
+[gd_scene load_steps=8 format=3 uid="uid://bc1dj8ndbsern"]
+
+[ext_resource type="Script" path="res://game/Game.cs" id="1_p6pr8"]
+[ext_resource type="PackedScene" uid="uid://bxcso7cbkn013" path="res://game/player/player.tscn" id="2_w6v8r"]
+[ext_resource type="PackedScene" uid="uid://bmaxka162il1m" path="res://debug_environment/simple_world.tscn" id="3_foh76"]
+[ext_resource type="Script" path="res://game/world/World.cs" id="4_8l5v2"]
+[ext_resource type="PackedScene" uid="uid://cpj78j5jdx6bo" path="res://game/city/city.tscn" id="4_c4425"]
+[ext_resource type="PackedScene" uid="uid://32ycoqj88oxr" path="res://game/fish/citizen/citizen.tscn" id="5_vhmcx"]
+[ext_resource type="PackedScene" uid="uid://bqv05go3gem4b" path="res://game/world/resources/forest.tscn" id="6_4kk3m"]
+
+[node name="Game" type="Node"]
+script = ExtResource("1_p6pr8")
+
+[node name="Player" parent="." instance=ExtResource("2_w6v8r")]
+
+[node name="PlayerView" parent="Player" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 5.28902, 8.9647)
+
+[node name="PlayerCamera" parent="Player/PlayerView" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 2.98023e-08, 0, -2.98023e-08, 1, 0, 4, 0)
+
+[node name="World" parent="." instance=ExtResource("3_foh76")]
+script = ExtResource("4_8l5v2")
+
+[node name="Resources" type="Node" parent="World"]
+
+[node name="Forest" parent="World/Resources" instance=ExtResource("6_4kk3m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -11)
+
+[node name="City" parent="." instance=ExtResource("4_c4425")]
+
+[node name="Citizen" parent="." instance=ExtResource("5_vhmcx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.213354, 5, 3.21922)
+
+[editable path="Player"]

@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://mbo1o15k0jnc"
-path="res://.godot/imported/Skull-VGtSTNRf2O.glb-bef7b97544affba5c26087ef7bdbc8c0.scn"
+path="res://.godot/imported/Skull-VGtSTNRf2O.glb-48c1fcd4bbcc57d06d7711e1c4ac936b.scn"
 
 [deps]
 
-source_file="res://game/enemies/Buildings/Skull-VGtSTNRf2O.glb"
-dest_files=["res://.godot/imported/Skull-VGtSTNRf2O.glb-bef7b97544affba5c26087ef7bdbc8c0.scn"]
+source_file="res://game/enemies/buildings/Skull-VGtSTNRf2O.glb"
+dest_files=["res://.godot/imported/Skull-VGtSTNRf2O.glb-48c1fcd4bbcc57d06d7711e1c4ac936b.scn"]
 
 [params]
 

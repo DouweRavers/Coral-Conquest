@@ -1,7 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://bwue5p6o52yn5"]
+[gd_scene load_steps=5 format=3 uid="uid://bwue5p6o52yn5"]
 
 [ext_resource type="Script" path="res://game/city/buildings/house/HouseMenu.cs" id="1_id83l"]
-[ext_resource type="PackedScene" uid="uid://cwdba6c6xa278" path="res://game/city/buildings/house/house_hud.tscn" id="2_2llef"]
+[ext_resource type="PackedScene" uid="uid://c8p2biake8w7x" path="res://game/city/buildings/HUDs/CitizenViewer.tscn" id="2_etskc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h164a"]
+bg_color = Color(0.7, 0.653333, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qgfad"]
 bg_color = Color(0, 0, 0, 1)
@@ -12,10 +15,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -192.0
-offset_top = -96.0
-offset_right = 192.0
-offset_bottom = 144.0
+offset_left = -347.5
+offset_top = -148.0
+offset_right = 347.5
+offset_bottom = 148.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_id83l")
@@ -32,10 +35,53 @@ offset_bottom = 16.0
 grow_horizontal = 0
 text = "X"
 
-[node name="HouseHUD" parent="." instance=ExtResource("2_2llef")]
+[node name="BuildingHUD" type="Control" parent="."]
 layout_mode = 1
-scale = Vector2(0.2, 0.2)
-pivot_offset = Vector2(900, 320)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -240.0
+offset_top = -127.0
+offset_right = 240.0
+offset_bottom = 127.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CitizenViewer" parent="BuildingHUD" instance=ExtResource("2_etskc")]
+layout_mode = 1
+scale = Vector2(0.3, 0.3)
+pivot_offset = Vector2(980, 240)
+
+[node name="ProgressBar" type="ProgressBar" parent="BuildingHUD"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -46.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 30
+theme_override_styles/fill = SubResource("StyleBoxFlat_h164a")
+max_value = 10.0
+step = 1.0
+value = 5.0
+allow_greater = true
+
+[node name="Label" type="Label" parent="BuildingHUD/ProgressBar"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 20.0
+offset_top = -21.0
+offset_right = 91.0
+offset_bottom = 21.0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "Food"
 
 [node name="Button2" type="Button" parent="."]
 layout_mode = 1

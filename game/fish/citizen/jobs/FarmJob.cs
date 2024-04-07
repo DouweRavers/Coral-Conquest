@@ -1,10 +1,8 @@
 public partial class FarmJob : Job
 {
     bool m_carringFood;
-    Farm m_farm;
 
-    public FarmJob(Citizen citizen, Farm farm) : base(citizen) { m_farm = farm; }
-
+    public FarmJob(Citizen citizen, Workplace workplace) : base(citizen, workplace) { }
 
     public override void WorkProcess()
     {
@@ -15,7 +13,7 @@ public partial class FarmJob : Job
             {
                 if (m_citizen.Home.FoodStorage < 10)
                 {
-                    m_citizen.Home.AddFood(1);
+                    m_citizen.Home.AddFood();
                     m_carringFood = false;
                 }
             }
@@ -23,16 +21,14 @@ public partial class FarmJob : Job
         }
         else
         {
-            if (m_farm.GlobalPosition.DistanceTo(m_citizen.GlobalPosition) < 10)
+            if (m_workplace.GlobalPosition.DistanceTo(m_citizen.GlobalPosition) < 10)
             {
-                if (0 < m_farm.AvailableFood) m_carringFood = m_farm.Harvest();
+                var farm = (Farm)m_workplace;
+                if (0 < farm.AvailableFood) m_carringFood = farm.Harvest();
             }
-            else m_citizen.GoTo(m_farm.GlobalPosition);
+            else m_citizen.GoTo(m_workplace.GlobalPosition);
         }
     }
-
-    public override void Start() { }
-    public override void Leave() { m_farm.RemoveWorker(m_citizen); }
 
 }
 

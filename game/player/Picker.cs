@@ -2,7 +2,7 @@ using Godot;
 
 public abstract partial class Picker : RayCast3D
 {
-    const float m_length = 30f;
+    const float m_length = 100f;
     protected abstract void OnSelect();
     protected abstract void OnDeselect();
     protected abstract void OnPoint();

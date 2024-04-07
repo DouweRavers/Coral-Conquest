@@ -1,19 +1,25 @@
 using Godot;
 
+public enum BuildingType { HOUSE, FARM, LODGE, CONSTRUCTION_OFFICE, BARACKS }
 public abstract partial class Building : StaticBody3D
 {
-    public enum BuildingType { HOUSE, FARM, WOODCUTTER }
 
     [Export] public BuildingType Type { get; protected set; }
 
     public override void _MouseEnter()
     {
-        GetNode<Node3D>("HUD").Visible = true;
+        GetNode<BuildingHUD>("HUD").Visible = true;
     }
 
     public override void _MouseExit()
     {
-        GetNode<Node3D>("HUD").Visible = false;
+        GetNode<BuildingHUD>("HUD").Visible = false;
     }
 
+    protected void UpdateHUD(Citizen[] citizens, int maxCount, int value)
+    {
+        var hud = GetNode<BuildingHUD>("HUD");
+        hud.UpdateCitizens(citizens, maxCount);
+        hud.UpdateBar(value);
+    }
 }

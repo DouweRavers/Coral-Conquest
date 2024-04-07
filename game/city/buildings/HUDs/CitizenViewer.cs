@@ -11,6 +11,7 @@ public partial class CitizenViewer : HBoxContainer
                 {
                     Citizen.JobTypes.VILLAGER => "res://game/fish/citizen/pictures/goldfish.png",
                     Citizen.JobTypes.FARMER => "res://game/fish/citizen/pictures/coralgrouper.png",
+                    Citizen.JobTypes.WOODCUTTER => "res://game/fish/citizen/pictures/swordfish.png",
                     _ => "res://game/fish/citizen/pictures/no_fish.png"
                 }
                 : "res://game/fish/citizen/pictures/no_fish.png");

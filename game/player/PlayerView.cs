@@ -11,12 +11,10 @@ public partial class PlayerView : CharacterBody3D
 
     [ExportCategory("Control properties")]
     [Export] float m_sensitivity = 0.01f;
-    [Export] float m_speedScale = 1.17f;
+    [Export] float m_velocity = 10f;
     [Export] float m_boostSpeedMultiplier = 3.0f;
-    [Export] float m_maxSpeed = 1000;
-    [Export] float m_minSpeed = 0.2f;
 
-    float m_velocity = 5;
+
     bool m_enableInput = true;
 
     public override void _Process(double delta)

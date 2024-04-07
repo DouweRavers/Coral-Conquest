@@ -21,277 +21,222 @@ transform = Transform3D(2.56992, 0, 0, 0, 2.56992, 0, 0, 0, 2.56992, 0, 0, 0)
 
 [node name="Anemone" parent="." instance=ExtResource("1_8ma8n")]
 material_overlay = ExtResource("2_cybvx")
-visibility_range_end = 80.0
 
 [node name="Anemone2" parent="." instance=ExtResource("1_8ma8n")]
 transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 3.76389, 0, 0.359344)
 material_overlay = ExtResource("2_cybvx")
-visibility_range_end = 80.0
 
 [node name="Anemone3" parent="." instance=ExtResource("1_8ma8n")]
 transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 4.84336, 0, 3.62171)
 material_overlay = ExtResource("2_cybvx")
-visibility_range_end = 80.0
 
 [node name="Anemone4" parent="." instance=ExtResource("1_8ma8n")]
 transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 1.08961, 0, 2.12117)
 material_overlay = ExtResource("2_cybvx")
-visibility_range_end = 80.0
 
 [node name="Anemone5" parent="." instance=ExtResource("1_8ma8n")]
 transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, -1.2657, -3.71091e-07, -3.08293)
 material_overlay = ExtResource("2_cybvx")
-visibility_range_end = 80.0
 
 [node name="mesh289903874" parent="." instance=ExtResource("2_sbfd4")]
 transform = Transform3D(1.61674, 0, 0, 0, 1.61674, 0, 0, 0, 1.61674, 1.16605, 0, -0.0612411)
 material_overlay = ExtResource("2_cybvx")
-visibility_range_end = 80.0
 
 [node name="mesh289903875" parent="." instance=ExtResource("2_sbfd4")]
 transform = Transform3D(1.61674, 0, -2.38419e-07, 0, 1.61674, 0, 2.38419e-07, 0, 1.61674, 7.24992, 0, 5.00329)
 material_overlay = ExtResource("2_cybvx")
-visibility_range_end = 80.0
 
 [node name="mesh289903876" parent="." instance=ExtResource("2_sbfd4")]
 transform = Transform3D(1.61674, 0, -4.76837e-07, 0, 1.61674, 0, 4.76837e-07, 0, 1.61674, 4.78802, 0, 0.801363)
 material_overlay = ExtResource("2_cybvx")
-visibility_range_end = 80.0
 
 [node name="mesh289903877" parent="." instance=ExtResource("2_sbfd4")]
 transform = Transform3D(1.61674, 0, -5.96046e-07, 0, 1.61674, 0, 5.96046e-07, 0, 1.61674, 4.05351, 0, 1.79582)
 material_overlay = ExtResource("2_cybvx")
-visibility_range_end = 80.0
 
 [node name="mesh289903878" parent="." instance=ExtResource("2_sbfd4")]
 transform = Transform3D(1.61674, 0, -7.15256e-07, 0, 1.61674, 0, 7.15256e-07, 0, 1.61674, 5.39295, 0, 2.67894)
 material_overlay = ExtResource("2_cybvx")
-visibility_range_end = 80.0
 
 [node name="mesh289903879" parent="." instance=ExtResource("2_sbfd4")]
 transform = Transform3D(1.61674, 0, -9.53674e-07, 0, 1.61674, 0, 9.53674e-07, 0, 1.61674, 3.24668, -7.42182e-07, 3.1912)
 material_overlay = ExtResource("2_cybvx")
-visibility_range_end = 80.0
 
 [node name="mesh289903880" parent="." instance=ExtResource("2_sbfd4")]
 transform = Transform3D(1.61674, 0, -1.19209e-06, 0, 1.61674, 0, 1.19209e-06, 0, 1.61674, 2.51985, -1.11327e-06, 1.82453)
 material_overlay = ExtResource("2_cybvx")
-visibility_range_end = 80.0
 
 [node name="mesh289903881" parent="." instance=ExtResource("2_sbfd4")]
 transform = Transform3D(1.61674, 0, -1.19209e-06, 0, 1.61674, 0, 1.19209e-06, 0, 1.61674, 2.51985, -1.11327e-06, 1.82453)
 material_overlay = ExtResource("2_cybvx")
-visibility_range_end = 80.0
 
 [node name="node_id73" parent="." instance=ExtResource("3_qdaye")]
 transform = Transform3D(0.389118, 0, 0, 0, 0.389118, 0, 0, 0, 0.389118, 1.43451, 0, -0.993484)
 material_overlay = ExtResource("2_cybvx")
-visibility_range_end = 80.0
 
 [node name="node_id74" parent="." instance=ExtResource("3_qdaye")]
 transform = Transform3D(0.0185471, 0, -0.388676, 0, 0.389118, 0, 0.388676, 0, 0.0185471, 0.275481, -3.71091e-07, 1.20419)
 material_overlay = ExtResource("2_cybvx")
-visibility_range_end = 80.0
 
 [node name="node_id75" parent="." instance=ExtResource("3_qdaye")]
 transform = Transform3D(0.0185471, 0, -0.388676, 0, 0.389118, 0, 0.388676, 0, 0.0185471, 4.08736, -3.71091e-07, 3.13049)
 material_overlay = ExtResource("2_cybvx")
-visibility_range_end = 80.0
 
 [node name="node_id76" parent="." instance=ExtResource("3_qdaye")]
 transform = Transform3D(0.384495, 0, -0.0598047, 0, 0.389118, 0, 0.0598047, 0, 0.384495, 6.55589, -7.42182e-07, 1.41166)
 material_overlay = ExtResource("2_cybvx")
-visibility_range_end = 80.0
 
 [node name="node_id77" parent="." instance=ExtResource("3_qdaye")]
 transform = Transform3D(0.382245, 0, 0.0728132, 0, 0.389118, 0, -0.0728132, 0, 0.382245, 5.41779, -1.11327e-06, 5.08837)
 material_overlay = ExtResource("2_cybvx")
-visibility_range_end = 80.0
 
 [node name="node_id67" parent="." instance=ExtResource("4_8g3id")]
 transform = Transform3D(0.389118, 0, 0, 0, 0.389118, 0, 0, 0, 0.389118, -0.419503, 0, -1.0724)
 material_overlay = ExtResource("2_cybvx")
-visibility_range_end = 80.0
 
 [node name="node_id68" parent="." instance=ExtResource("4_8g3id")]
 transform = Transform3D(0.389118, 0, -1.49012e-08, 0, 0.389118, 0, 1.49012e-08, 0, 0.389118, 2.39691, -3.71091e-07, 1.02124)
 material_overlay = ExtResource("2_cybvx")
-visibility_range_end = 80.0
 
 [node name="node_id69" parent="." instance=ExtResource("4_8g3id")]
 transform = Transform3D(0.389118, 0, -1.49012e-08, 0, 0.389118, 0, 1.49012e-08, 0, 0.389118, 6.24706, -3.71091e-07, 3.86375)
 material_overlay = ExtResource("2_cybvx")
-visibility_range_end = 80.0
 
 [node name="node_id70" parent="." instance=ExtResource("4_8g3id")]
 transform = Transform3D(0.389118, 0, -1.49012e-08, 0, 0.389118, 0, 1.49012e-08, 0, 0.389118, 2.46101, -3.71091e-07, 2.54369)
 material_overlay = ExtResource("2_cybvx")
-visibility_range_end = 80.0
 
 [node name="node_id71" parent="." instance=ExtResource("5_dd0xx")]
 transform = Transform3D(0.389118, 0, 0, 0, 0.389118, 0, 0, 0, 0.389118, 0.161977, 0, -1.60475)
 material_overlay = ExtResource("2_cybvx")
-visibility_range_end = 80.0
 
 [node name="node_id78" parent="." instance=ExtResource("5_dd0xx")]
 transform = Transform3D(0.389118, 0, -1.49012e-08, 0, 0.389118, 0, 1.49012e-08, 0, 0.389118, 5.08064, 0, 1.98055)
 material_overlay = ExtResource("2_cybvx")
-visibility_range_end = 80.0
 
 [node name="node_id72" parent="." instance=ExtResource("5_dd0xx")]
 transform = Transform3D(0.389118, 0, 0, 0, 0.389118, 0, 0, 0, 0.389118, 1.0893, 0, 0.533886)
 material_overlay = ExtResource("2_cybvx")
-visibility_range_end = 80.0
 
 [node name="node_id79" parent="." instance=ExtResource("5_dd0xx")]
 transform = Transform3D(0.389118, 0, -1.49012e-08, 0, 0.389118, 0, 1.49012e-08, 0, 0.389118, 7.04619, 0, 5.36118)
 material_overlay = ExtResource("2_cybvx")
-visibility_range_end = 80.0
 
 [node name="group1965416314" parent="." instance=ExtResource("6_dq4vw")]
 transform = Transform3D(2.38725, 0, 0, 0, 2.38725, 0, 0, 0, 2.38725, 3.13341, 0.338703, -1.24442)
 material_overlay = ExtResource("2_cybvx")
-visibility_range_end = 80.0
 
 [node name="group1965416315" parent="." instance=ExtResource("6_dq4vw")]
 transform = Transform3D(2.38725, 0, 0, 0, 2.38725, 0, 0, 0, 2.38725, 3.55474, 0.338703, 1.71485)
 material_overlay = ExtResource("2_cybvx")
-visibility_range_end = 80.0
 
 [node name="group1965416316" parent="." instance=ExtResource("6_dq4vw")]
 transform = Transform3D(2.38725, 0, 0, 0, 2.38725, 0, 0, 0, 2.38725, -0.532127, 0.338703, -2.59456)
 material_overlay = ExtResource("2_cybvx")
-visibility_range_end = 80.0
 
 [node name="Node_001" parent="." instance=ExtResource("7_ikbon")]
 transform = Transform3D(1.08424, 0, 0, 0, 1.08424, 0, 0, 0, 1.08424, 2.01207, 0.564527, -1.78505)
 material_overlay = ExtResource("2_cybvx")
-visibility_range_end = 80.0
 
 [node name="Node_003" parent="." instance=ExtResource("7_ikbon")]
 transform = Transform3D(1.08424, 0, 0, 0, 1.08424, 0, 0, 0, 1.08424, 1.67955, 0.564527, 2.62315)
 material_overlay = ExtResource("2_cybvx")
-visibility_range_end = 80.0
 
 [node name="Node_004" parent="." instance=ExtResource("7_ikbon")]
 transform = Transform3D(1.08424, 0, 0, 0, 1.08424, 0, 0, 0, 1.08424, 3.06714, 0.564527, 0.948678)
 material_overlay = ExtResource("2_cybvx")
-visibility_range_end = 80.0
 
 [node name="Node_005" parent="." instance=ExtResource("7_ikbon")]
 transform = Transform3D(1.08424, 0, 0, 0, 1.08424, 0, 0, 0, 1.08424, 4.84224, 0.564527, 2.41467)
 material_overlay = ExtResource("2_cybvx")
-visibility_range_end = 80.0
 
 [node name="Node_006" parent="." instance=ExtResource("7_ikbon")]
 transform = Transform3D(1.08424, 0, 0, 0, 1.08424, 0, 0, 0, 1.08424, 5.98718, 0.564527, 3.02389)
 material_overlay = ExtResource("2_cybvx")
-visibility_range_end = 80.0
 
 [node name="Node_007" parent="." instance=ExtResource("7_ikbon")]
 transform = Transform3D(1.08424, 0, 0, 0, 1.08424, 0, 0, 0, 1.08424, 5.31236, 0.564527, 4.16653)
 material_overlay = ExtResource("2_cybvx")
-visibility_range_end = 80.0
 
 [node name="Node_002" parent="." instance=ExtResource("8_yv0vc")]
 transform = Transform3D(1.32012, 0, 0, 0, 1.32012, 0, 0, 0, 1.32012, 2.34372, 0.390499, -0.156222)
 material_overlay = ExtResource("2_cybvx")
-visibility_range_end = 80.0
 
 [node name="Node_008" parent="." instance=ExtResource("8_yv0vc")]
 transform = Transform3D(1.32012, 0, -5.96046e-08, 0, 1.32012, 0, 5.96046e-08, 0, 1.32012, 2.73029, 0.390499, 3.50067)
 material_overlay = ExtResource("2_cybvx")
-visibility_range_end = 80.0
 
 [node name="Node_009" parent="." instance=ExtResource("8_yv0vc")]
 transform = Transform3D(1.32012, 0, -5.96046e-08, 0, 1.32012, 0, 5.96046e-08, 0, 1.32012, -1.18699, 0.390499, -1.58875)
 material_overlay = ExtResource("2_cybvx")
-visibility_range_end = 80.0
 
 [node name="Node_010" parent="." instance=ExtResource("8_yv0vc")]
 transform = Transform3D(1.32012, 0, -5.96046e-08, 0, 1.32012, 0, 5.96046e-08, 0, 1.32012, 2.49186, 0.390499, -3.91094)
 material_overlay = ExtResource("2_cybvx")
-visibility_range_end = 80.0
 
 [node name="Node_011" parent="." instance=ExtResource("8_yv0vc")]
 transform = Transform3D(1.32012, 0, -5.96046e-08, 0, 1.32012, 0, 5.96046e-08, 0, 1.32012, 7.64855, 0.390499, 4.02655)
 material_overlay = ExtResource("2_cybvx")
-visibility_range_end = 80.0
 
 [node name="Node_012" parent="." instance=ExtResource("8_yv0vc")]
 transform = Transform3D(1.32012, 0, -5.96046e-08, 0, 1.32012, 0, 5.96046e-08, 0, 1.32012, 7.64855, 0.390499, 4.02655)
 material_overlay = ExtResource("2_cybvx")
-visibility_range_end = 80.0
 
 [node name="coral" parent="." instance=ExtResource("9_7h232")]
 transform = Transform3D(0.921493, 0, 0, 0, 0.921493, 0, 0, 0, 0.921493, 0.980609, 0.495319, -2.42379)
 material_overlay = ExtResource("2_cybvx")
-visibility_range_end = 80.0
 
 [node name="coral2" parent="." instance=ExtResource("9_7h232")]
 transform = Transform3D(0.921493, 0, 0, 0, 0.921493, 0, 0, 0, 0.921493, 1.77759, 0.495319, 1.4049)
 material_overlay = ExtResource("2_cybvx")
-visibility_range_end = 80.0
 
 [node name="coral3" parent="." instance=ExtResource("9_7h232")]
 transform = Transform3D(0.921493, 0, 0, 0, 0.921493, 0, 0, 0, 0.921493, 3.93803, 0.495319, 1.06865)
 material_overlay = ExtResource("2_cybvx")
-visibility_range_end = 80.0
 
 [node name="coral4" parent="." instance=ExtResource("9_7h232")]
 transform = Transform3D(0.921493, 0, 0, 0, 0.921493, 0, 0, 0, 0.921493, 3.88907, 0.495318, 4.52245)
 material_overlay = ExtResource("2_cybvx")
-visibility_range_end = 80.0
 
 [node name="Node" parent="." instance=ExtResource("10_o2ylg")]
 transform = Transform3D(0.101483, 0, 0, 0, 0.101483, 0, 0, 0, 0.101483, 1.88625, 0, -2.49689)
 material_overlay = ExtResource("2_cybvx")
-visibility_range_end = 80.0
 
 [node name="Node2" parent="." instance=ExtResource("10_o2ylg")]
 transform = Transform3D(0.101483, 0, -3.72529e-09, 0, 0.101483, 0, 3.72529e-09, 0, 0.101483, -1.05947, 7.42182e-07, 0.209174)
 material_overlay = ExtResource("2_cybvx")
-visibility_range_end = 80.0
 
 [node name="Node3" parent="." instance=ExtResource("10_o2ylg")]
 transform = Transform3D(0.101483, 0, -3.72529e-09, 0, 0.101483, 0, 3.72529e-09, 0, 0.101483, 1.63321, 1.11327e-06, 3.49927)
 material_overlay = ExtResource("2_cybvx")
-visibility_range_end = 80.0
 
 [node name="Node4" parent="." instance=ExtResource("10_o2ylg")]
 transform = Transform3D(0.101483, 0, -3.72529e-09, 0, 0.101483, 0, 3.72529e-09, 0, 0.101483, 6.29842, 7.42182e-07, 6.06895)
 material_overlay = ExtResource("2_cybvx")
-visibility_range_end = 80.0
 
 [node name="Node5" parent="." instance=ExtResource("10_o2ylg")]
 transform = Transform3D(0.101483, 0, -3.72529e-09, 0, 0.101483, 0, 3.72529e-09, 0, 0.101483, -2.06802, 7.42182e-07, -2.22195)
 material_overlay = ExtResource("2_cybvx")
-visibility_range_end = 80.0
 
 [node name="node_id63" parent="." instance=ExtResource("11_3xyt3")]
 transform = Transform3D(0.62409, 0, 0, 0, 0.62409, 0, 0, 0, 0.62409, 2.83777, 0.163608, -2.38623)
 material_overlay = ExtResource("2_cybvx")
-visibility_range_end = 80.0
 
 [node name="node_id64" parent="." instance=ExtResource("11_3xyt3")]
 transform = Transform3D(0.62409, 0, -2.98023e-08, 0, 0.62409, 0, 2.98023e-08, 0, 0.62409, -0.786763, 0.163608, 1.0623)
 material_overlay = ExtResource("2_cybvx")
-visibility_range_end = 80.0
 
 [node name="node_id65" parent="." instance=ExtResource("11_3xyt3")]
 transform = Transform3D(0.62409, 0, -2.98023e-08, 0, 0.62409, 0, 2.98023e-08, 0, 0.62409, -1.94362, 0.163608, -0.969514)
 material_overlay = ExtResource("2_cybvx")
-visibility_range_end = 80.0
 
 [node name="node_id66" parent="." instance=ExtResource("11_3xyt3")]
 transform = Transform3D(0.62409, 0, -2.98023e-08, 0, 0.62409, 0, 2.98023e-08, 0, 0.62409, 2.80773, 0.163608, 4.09897)
 material_overlay = ExtResource("2_cybvx")
-visibility_range_end = 80.0
 
 [node name="node_id80" parent="." instance=ExtResource("11_3xyt3")]
 transform = Transform3D(0.62409, 0, -2.98023e-08, 0, 0.62409, 0, 2.98023e-08, 0, 0.62409, 5.20002, 0.163608, 6.12843)
 material_overlay = ExtResource("2_cybvx")
-visibility_range_end = 80.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.710026, 0, -0.704176, 0, 1, 0, 0.704176, 0, 0.710026, 2.69045, 0, 1.03995)

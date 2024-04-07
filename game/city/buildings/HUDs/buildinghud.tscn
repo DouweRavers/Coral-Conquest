@@ -1,0 +1,74 @@
+[gd_scene load_steps=5 format=3 uid="uid://dkqdp8xieucbe"]
+
+[ext_resource type="Script" path="res://game/city/buildings/HUDs/BuildingHUD.cs" id="1_pr0dv"]
+[ext_resource type="PackedScene" uid="uid://c8p2biake8w7x" path="res://game/city/buildings/HUDs/CitizenViewer.tscn" id="1_wc1fy"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_fkwe5"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h164a"]
+bg_color = Color(0.7, 0.653333, 0, 1)
+
+[node name="HUD" type="Node3D"]
+script = ExtResource("1_pr0dv")
+
+[node name="HUD" type="Sprite3D" parent="."]
+cast_shadow = 0
+gi_mode = 0
+billboard = 1
+no_depth_test = true
+texture = SubResource("ViewportTexture_fkwe5")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+disable_3d = true
+transparent_bg = true
+handle_input_locally = false
+gui_disable_input = true
+size = Vector2i(1800, 640)
+
+[node name="BuildingHUD" type="Control" parent="SubViewport"]
+custom_minimum_size = Vector2(1800, 640)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -900.0
+offset_top = -320.0
+offset_right = 900.0
+offset_bottom = 320.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CitizenViewer" parent="SubViewport/BuildingHUD" instance=ExtResource("1_wc1fy")]
+layout_mode = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="SubViewport/BuildingHUD"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -112.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 80
+theme_override_styles/fill = SubResource("StyleBoxFlat_h164a")
+max_value = 10.0
+step = 1.0
+value = 5.0
+allow_greater = true
+
+[node name="Label" type="Label" parent="SubViewport/BuildingHUD/ProgressBar"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 59.0
+offset_top = -41.5
+offset_right = 202.0
+offset_bottom = 41.5
+grow_vertical = 2
+theme_override_font_sizes/font_size = 80
+text = "Food"

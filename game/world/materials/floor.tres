@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://b055hnuiux2ns"]
+
+[ext_resource type="Material" uid="uid://dd4lud77yeg3a" path="res://vfx/underwater/water_caustics.tres" id="1_j1o8w"]
+
+[resource]
+next_pass = ExtResource("1_j1o8w")
+albedo_color = Color(0.89, 0.764658, 0.3115, 1)

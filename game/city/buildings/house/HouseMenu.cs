@@ -11,7 +11,7 @@ public partial class HouseMenu : Control
 
     private void UpdateViewer()
     {
-        GetNode<ProgressBar>("HouseHUD/ProgressBar").Value = GetParent<House>().FoodStorage;
-        GetNode<CitizenViewer>("HouseHUD/InhabitansViewer").ShowCitizens(GetParent<House>().Inhabitants.ToArray(), 4);
+        GetNode<ProgressBar>("BuildingHUD/ProgressBar").Value = GetParent<House>().FoodStorage;
+        GetNode<CitizenViewer>("BuildingHUD/CitizenViewer").ShowCitizens(GetParent<House>().Inhabitants.ToArray(), 4);
     }
 }

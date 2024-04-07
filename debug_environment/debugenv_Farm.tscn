@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://3stglr6qnqra"]
+
+[ext_resource type="Script" path="res://game/Game.cs" id="1_8afsr"]
+[ext_resource type="PackedScene" uid="uid://bxcso7cbkn013" path="res://game/player/player.tscn" id="2_8vig1"]
+[ext_resource type="PackedScene" uid="uid://bmaxka162il1m" path="res://debug_environment/simple_world.tscn" id="3_advxg"]
+[ext_resource type="Script" path="res://game/city/City.cs" id="4_keq4c"]
+[ext_resource type="PackedScene" uid="uid://d4jo1lnluvlgh" path="res://game/city/buildings/house/house.tscn" id="5_wb33c"]
+
+[node name="Game" type="Node"]
+script = ExtResource("1_8afsr")
+
+[node name="Player" parent="." instance=ExtResource("2_8vig1")]
+
+[node name="PlayerView" parent="Player" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 5.5, 9.33012)
+
+[node name="SimpleWorld" parent="." instance=ExtResource("3_advxg")]
+
+[node name="City" type="Node" parent="."]
+script = ExtResource("4_keq4c")
+
+[node name="Citizens" type="Node" parent="City"]
+
+[node name="Buildings" type="Node" parent="City"]
+
+[node name="House" parent="City/Buildings" instance=ExtResource("5_wb33c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.74068, 0, -8.16926)
+
+[editable path="Player"]

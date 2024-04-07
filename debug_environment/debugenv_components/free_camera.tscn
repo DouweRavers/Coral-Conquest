@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://v24ay4kmc5m4"]
-
-[ext_resource type="Script" path="res://nodes/test_environments/testenv_components/FreeCamera.cs" id="1_u7yrk"]
-
-[node name="FreeCamera" type="Camera3D"]
-script = ExtResource("1_u7yrk")

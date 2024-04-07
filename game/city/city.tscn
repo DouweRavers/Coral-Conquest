@@ -1,29 +1,13 @@
 [gd_scene load_steps=3 format=3 uid="uid://cpj78j5jdx6bo"]
 
-[ext_resource type="PackedScene" uid="uid://br2nnxe5gw2m6" path="res://game/city/BuilderMenu/builder_menu.tscn" id="1_d18b2"]
 [ext_resource type="Script" path="res://game/city/City.cs" id="1_py51h"]
+[ext_resource type="PackedScene" uid="uid://br2nnxe5gw2m6" path="res://game/city/building_menu/builder_menu.tscn" id="3_nhsju"]
 
-[node name="City" type="Node" node_paths=PackedStringArray("m_buildings")]
+[node name="City" type="Node"]
 script = ExtResource("1_py51h")
-m_buildings = NodePath("Buildings")
 
-[node name="Buildings" type="Node3D" parent="."]
+[node name="Citizens" type="Node" parent="."]
 
-[node name="BuilderMenu" parent="." instance=ExtResource("1_d18b2")]
+[node name="Buildings" type="Node" parent="."]
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
-anchors_preset = 10
-anchor_right = 1.0
-grow_horizontal = 2
-alignment = 1
-
-[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="HBoxContainer/HBoxContainer"]
-layout_mode = 2
-text = "Population"
-
-[node name="SpinBox" type="SpinBox" parent="HBoxContainer/HBoxContainer"]
-layout_mode = 2
-editable = false
+[node name="BuilderMenu" parent="." instance=ExtResource("3_nhsju")]

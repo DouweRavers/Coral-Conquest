@@ -8,10 +8,10 @@
 	  "workingDirectory": ".",
 	  "nativeDebugging": true
 	},
-	"Godot Debug Player": {
+	"Godot Debug Citizen": {
 	  "commandName": "Executable",
 	  "executablePath": "D:\\Program Files\\Godot\\godot NET 4.2\\godot.windows.editor.x86_64.mono.exe",
-	  "commandLineArgs": "--upwards ./game/player/player.tscn --verbose",
+	  "commandLineArgs": "--upwards ./game/fish/citizen/citizen.tscn --verbose",
 	  "workingDirectory": ".",
 	  "nativeDebugging": true
 	}

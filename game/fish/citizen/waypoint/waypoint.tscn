@@ -1,0 +1,83 @@
+[gd_scene load_steps=8 format=3 uid="uid://b7e36bpj5yk4n"]
+
+[ext_resource type="PackedScene" uid="uid://de4gu11neuaja" path="res://game/fish/citizen/waypoint/Lure-JknXyvHxtD.glb" id="1_sldmv"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xksk4"]
+albedo_color = Color(0.176419, 0.176419, 0.176419, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_m5bww"]
+material = SubResource("StandardMaterial3D_xksk4")
+top_radius = 0.05
+bottom_radius = 0.05
+height = 50.0
+radial_segments = 8
+rings = 2
+cap_top = false
+cap_bottom = false
+
+[sub_resource type="Animation" id="Animation_witvw"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RootNode:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(50, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_sd64s"]
+resource_name = "go_down"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RootNode:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(50, -0.25, 0, 0, -51, 5, -1, -5, 0, 0),
+"times": PackedFloat32Array(0, 1)
+}
+
+[sub_resource type="Animation" id="Animation_kjgwx"]
+resource_name = "go_up"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RootNode:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(5, 0, 0, 1, -5, 50, 0, -50, 0, 0),
+"times": PackedFloat32Array(0, 1)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_n8piq"]
+_data = {
+"RESET": SubResource("Animation_witvw"),
+"go_down": SubResource("Animation_sd64s"),
+"go_up": SubResource("Animation_kjgwx")
+}
+
+[node name="Waypoint" instance=ExtResource("1_sldmv")]
+
+[node name="RootNode" parent="." index="0"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 50, 0.126)
+
+[node name="Lure_2" parent="RootNode" index="0"]
+transform = Transform3D(100, 0, 0, 0, -1.19209e-05, 100, 0, -100, -1.19209e-05, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RootNode/Lure_2" index="0"]
+transform = Transform3D(-4.37114e-10, -0.01, -3.46945e-24, -1.19209e-09, 5.21081e-17, -0.01, 0.01, -4.37114e-10, -1.19209e-09, -0.246058, 0.00126121, -1.06052e-08)
+mesh = SubResource("CylinderMesh_m5bww")
+skeleton = NodePath("../../..")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]
+libraries = {
+"": SubResource("AnimationLibrary_n8piq")
+}

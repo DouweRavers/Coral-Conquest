@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bxcso7cbkn013"]
+[gd_scene load_steps=6 format=3 uid="uid://bxcso7cbkn013"]
 
 [ext_resource type="Script" path="res://game/player/PlayerView.cs" id="1_u8n4n"]
 [ext_resource type="Script" path="res://game/player/Player.cs" id="1_w5irj"]
 [ext_resource type="PackedScene" uid="uid://b8lg47fbvu0wf" path="res://game/player/minimap/minimap.tscn" id="4_c73yt"]
+[ext_resource type="PackedScene" uid="uid://b7e36bpj5yk4n" path="res://game/fish/citizen/waypoint/waypoint.tscn" id="4_xcexx"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_yg03i"]
 
@@ -10,14 +11,16 @@
 script = ExtResource("1_w5irj")
 
 [node name="PlayerView" type="CharacterBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 10, 0)
 script = ExtResource("1_u8n4n")
 m_sensitivity = 0.005
 
 [node name="PlayerCamera" type="Camera3D" parent="PlayerView"]
-far = 100.0
+far = 80.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerView"]
 shape = SubResource("SphereShape3D_yg03i")
 
 [node name="Minimap" parent="." instance=ExtResource("4_c73yt")]
+
+[node name="Waypoint" parent="." instance=ExtResource("4_xcexx")]

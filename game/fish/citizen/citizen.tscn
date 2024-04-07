@@ -1,0 +1,149 @@
+[gd_scene load_steps=26 format=3 uid="uid://32ycoqj88oxr"]
+
+[ext_resource type="Script" path="res://game/fish/citizen/Citizen.cs" id="1_yj7nq"]
+[ext_resource type="PackedScene" uid="uid://voi5n8vpbbfx" path="res://game/fish/citizen/villager/villager.tscn" id="2_nev38"]
+[ext_resource type="PackedScene" uid="uid://b4skxc82iaqji" path="res://game/fish/fish_hud.tscn" id="3_6wg4x"]
+[ext_resource type="PackedScene" uid="uid://dk5xmgjqevs1r" path="res://vfx/Indicator/indicator.tscn" id="3_gr0ub"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_t1ehy"]
+animation = &"Fish_Armature|Attack"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_cu0hn"]
+animation = &"Fish_Armature|Death"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5gw0a"]
+animation = &"Fish_Armature|Swimming_Normal"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_d6uki"]
+animation = &"Fish_Armature|Swimming_Impulse"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_oi81j"]
+animation = &"Fish_Armature|Swimming_Fast"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_mqlt0"]
+advance_mode = 2
+
+[sub_resource type="Curve" id="Curve_2o0ty"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vo1g1"]
+xfade_time = 0.1
+xfade_curve = SubResource("Curve_2o0ty")
+advance_condition = &"Swim"
+
+[sub_resource type="Curve" id="Curve_yi0c1"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_axqau"]
+xfade_time = 0.5
+xfade_curve = SubResource("Curve_yi0c1")
+advance_condition = &"!Swim"
+
+[sub_resource type="Curve" id="Curve_xatmb"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ghdvq"]
+xfade_time = 0.1
+xfade_curve = SubResource("Curve_xatmb")
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_0d0ea"]
+states/End/position = Vector2(626, 52)
+states/Idle/node = SubResource("AnimationNodeAnimation_5gw0a")
+states/Idle/position = Vector2(404, 52)
+states/Impulse/node = SubResource("AnimationNodeAnimation_d6uki")
+states/Impulse/position = Vector2(404, 149)
+states/Start/position = Vector2(294, 52)
+states/Swim/node = SubResource("AnimationNodeAnimation_oi81j")
+states/Swim/position = Vector2(524, 100)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_mqlt0"), "Idle", "Impulse", SubResource("AnimationNodeStateMachineTransition_vo1g1"), "Swim", "Idle", SubResource("AnimationNodeStateMachineTransition_axqau"), "Impulse", "Swim", SubResource("AnimationNodeStateMachineTransition_ghdvq")]
+graph_offset = Vector2(-90, -73.2131)
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ecrtp"]
+advance_mode = 2
+
+[sub_resource type="Curve" id="Curve_5wugc"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wslsp"]
+xfade_time = 0.2
+xfade_curve = SubResource("Curve_5wugc")
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ujlmb"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_43b31"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_lka3c"]
+states/Attack/node = SubResource("AnimationNodeAnimation_t1ehy")
+states/Attack/position = Vector2(435, 199)
+states/Die/node = SubResource("AnimationNodeAnimation_cu0hn")
+states/Die/position = Vector2(576, 100)
+states/End/position = Vector2(700, 100)
+states/Movement/node = SubResource("AnimationNodeStateMachine_0d0ea")
+states/Movement/position = Vector2(435, 100)
+states/Start/position = Vector2(285, 100)
+transitions = ["Start", "Movement", SubResource("AnimationNodeStateMachineTransition_ecrtp"), "Movement", "Attack", SubResource("AnimationNodeStateMachineTransition_wslsp"), "Movement", "Die", SubResource("AnimationNodeStateMachineTransition_ujlmb"), "Attack", "Movement", SubResource("AnimationNodeStateMachineTransition_43b31")]
+graph_offset = Vector2(-214, 13.7213)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_o3vpk"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_llbni"]
+viewport_path = NodePath("HUD/SubViewport")
+
+[node name="Citizen" type="CharacterBody3D"]
+motion_mode = 1
+script = ExtResource("1_yj7nq")
+
+[node name="Navigation" type="NavigationAgent3D" parent="."]
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+root_node = NodePath("../Skin")
+tree_root = SubResource("AnimationNodeStateMachine_lka3c")
+anim_player = NodePath("../Skin/AnimationPlayer")
+parameters/Movement/conditions/!Swim = false
+parameters/Movement/conditions/Swim = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_o3vpk")
+
+[node name="Skin" parent="." instance=ExtResource("2_nev38")]
+transform = Transform3D(-0.3, 0, 2.62268e-08, 0, 0.3, 0, -2.62268e-08, 0, -0.3, 0, 0, 0)
+
+[node name="Skeleton3D" parent="Skin/RootNode/Fish_Armature" index="0"]
+bones/0/rotation = Quaternion(-3.11805e-06, -3.18248e-06, -0.0286417, 0.99959)
+bones/1/rotation = Quaternion(-0.00867282, 0.0744465, -0.0283821, 0.996783)
+bones/2/rotation = Quaternion(-3.15151e-06, -3.09115e-06, -0.0293007, 0.999571)
+bones/3/rotation = Quaternion(-0.00797335, 0.00109915, -0.0617067, 0.998062)
+bones/4/rotation = Quaternion(0.00797802, 0.000329383, -0.0412063, 0.999119)
+bones/5/rotation = Quaternion(1.74387e-08, 1.88441e-08, 0.0316856, 0.999498)
+
+[node name="HUD" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+visible = false
+cast_shadow = 0
+gi_mode = 0
+billboard = 1
+no_depth_test = true
+texture = SubResource("ViewportTexture_llbni")
+
+[node name="SubViewport" type="SubViewport" parent="HUD"]
+disable_3d = true
+transparent_bg = true
+handle_input_locally = false
+gui_disable_input = true
+size = Vector2i(480, 180)
+
+[node name="FishHUD" parent="HUD/SubViewport" instance=ExtResource("3_6wg4x")]
+
+[node name="Indicator" parent="." instance=ExtResource("3_gr0ub")]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, -0.5, 0)
+visible = false
+
+[editable path="Skin"]

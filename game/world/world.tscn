@@ -1,29 +1,29 @@
-[gd_scene load_steps=7 format=3 uid="uid://dlncxbyu6knnu"]
+[gd_scene load_steps=9 format=3 uid="uid://dlncxbyu6knnu"]
 
-[ext_resource type="Environment" uid="uid://215iivnl60mc" path="res://game/world/effects/UnderwaterEnv.tres" id="1_epucc"]
-[ext_resource type="Material" uid="uid://dd4lud77yeg3a" path="res://game/world/effects/water_caustics.tres" id="2_502oc"]
+[ext_resource type="Environment" uid="uid://215iivnl60mc" path="res://vfx/underwater/UnderwaterEnv.tres" id="1_epucc"]
+[ext_resource type="Material" uid="uid://dd4lud77yeg3a" path="res://vfx/underwater/water_caustics.tres" id="2_502oc"]
 [ext_resource type="PackedScene" uid="uid://c5eh7bw11uoro" path="res://game/world/floor.glb" id="2_f1tar"]
-[ext_resource type="Material" uid="uid://baurjc7y5y43j" path="res://game/world/floor.tres" id="3_aotrn"]
 [ext_resource type="PackedScene" uid="uid://b1lqqe3xgrnta" path="res://game/world/deco/rock_formation.tscn" id="3_kdgex"]
+[ext_resource type="NavigationMesh" uid="uid://bjminj53hh5bp" path="res://game/world/navmesh.tres" id="4_lxvk3"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_lf6wm"]
 
-[node name="World" type="Node3D"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cea05"]
+albedo_color = Color(0.89, 0.764658, 0.3115, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_y5x0i"]
+size = Vector2(500, 500)
+
+[node name="World" type="Node"]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+transform = Transform3D(-0.866024, -0.433016, 0.250001, 0, 0.499998, 0.866026, -0.500003, 0.749999, -0.43301, 0, 27.8105, 0)
 shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("1_epucc")
 
-[node name="floor" parent="." instance=ExtResource("2_f1tar")]
-
-[node name="Plane" parent="floor" index="0"]
-material_overlay = ExtResource("2_502oc")
-surface_material_override/0 = ExtResource("3_aotrn")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="floor"]
+[node name="Floor" type="StaticBody3D" parent="."]
 collision_layer = 3
 axis_lock_linear_x = true
 axis_lock_linear_y = true
@@ -32,79 +32,94 @@ axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="floor/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
 shape = SubResource("WorldBoundaryShape3D_lf6wm")
 
-[node name="RockFormation" parent="floor" instance=ExtResource("3_kdgex")]
+[node name="floor" parent="Floor" instance=ExtResource("2_f1tar")]
+
+[node name="Plane" parent="Floor/floor" index="0"]
+material_overlay = ExtResource("2_502oc")
+surface_material_override/0 = SubResource("StandardMaterial3D_cea05")
+
+[node name="NavigationRegion" type="NavigationRegion3D" parent="."]
+navigation_mesh = ExtResource("4_lxvk3")
+
+[node name="SwimmableArea" type="MeshInstance3D" parent="NavigationRegion"]
+process_mode = 4
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+visible = false
+mesh = SubResource("PlaneMesh_y5x0i")
+
+[node name="RockFormation" parent="NavigationRegion" instance=ExtResource("3_kdgex")]
 transform = Transform3D(0.842565, 0, -0.538594, 0, 1, 0, 0.538594, 0, 0.842565, -2.44209, -3.05176e-05, -91.715)
 
-[node name="RockFormation2" parent="floor" instance=ExtResource("3_kdgex")]
+[node name="RockFormation2" parent="NavigationRegion" instance=ExtResource("3_kdgex")]
 transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, -76.4754, 0, -51.8078)
 
-[node name="RockFormation3" parent="floor" instance=ExtResource("3_kdgex")]
+[node name="RockFormation3" parent="NavigationRegion" instance=ExtResource("3_kdgex")]
 transform = Transform3D(-0.258819, 9.05292e-09, 0.965926, -4.36678e-09, 1, -1.05424e-08, -0.965926, -6.94655e-09, -0.258819, -39.6649, 0, 24.0512)
 
-[node name="RockFormation4" parent="floor" instance=ExtResource("3_kdgex")]
+[node name="RockFormation4" parent="NavigationRegion" instance=ExtResource("3_kdgex")]
 transform = Transform3D(-0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, -0.965926, 81.375, 0, 74.8647)
 
-[node name="RockFormation5" parent="floor" instance=ExtResource("3_kdgex")]
+[node name="RockFormation5" parent="NavigationRegion" instance=ExtResource("3_kdgex")]
 transform = Transform3D(-0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, -0.258819, 128.647, 0, -14.6034)
 
-[node name="RockFormation6" parent="floor" instance=ExtResource("3_kdgex")]
+[node name="RockFormation6" parent="NavigationRegion" instance=ExtResource("3_kdgex")]
 transform = Transform3D(0.965926, 1.48943e-09, -0.258819, -4.36679e-09, 1, -1.05424e-08, 0.258819, 1.13133e-08, 0.965926, 40.0961, 0, -198.916)
 
-[node name="RockFormation7" parent="floor" instance=ExtResource("3_kdgex")]
+[node name="RockFormation7" parent="NavigationRegion" instance=ExtResource("3_kdgex")]
 transform = Transform3D(-0.0582957, 0, 0.998299, 0, 1, 0, -0.998299, 0, -0.0582957, -208.145, 0, 29.9851)
 
-[node name="RockFormation8" parent="floor" instance=ExtResource("3_kdgex")]
+[node name="RockFormation8" parent="NavigationRegion" instance=ExtResource("3_kdgex")]
 transform = Transform3D(0.00705114, 0, 0.999975, 0, 1, 0, -0.999975, 0, 0.00705114, -175.601, 0, 98.3112)
 
-[node name="RockFormation9" parent="floor" instance=ExtResource("3_kdgex")]
+[node name="RockFormation9" parent="NavigationRegion" instance=ExtResource("3_kdgex")]
 transform = Transform3D(-0.641677, 5.28365e-09, 0.766975, -4.36678e-09, 1, -1.05424e-08, -0.766975, -1.0114e-08, -0.641677, -108.152, 0, 148.948)
 
-[node name="RockFormation10" parent="floor" instance=ExtResource("3_kdgex")]
+[node name="RockFormation10" parent="NavigationRegion" instance=ExtResource("3_kdgex")]
 transform = Transform3D(-0.889568, 0, 0.456803, 0, 1, 0, -0.456803, 0, -0.889568, -68.5418, 0, 200.746)
 
-[node name="RockFormation11" parent="floor" instance=ExtResource("3_kdgex")]
+[node name="RockFormation11" parent="NavigationRegion" instance=ExtResource("3_kdgex")]
 transform = Transform3D(-0.857823, 0, 0.513946, 0, 1, 0, -0.513946, 0, -0.857823, 6.84454, 0, 207.413)
 
-[node name="RockFormation12" parent="floor" instance=ExtResource("3_kdgex")]
+[node name="RockFormation12" parent="NavigationRegion" instance=ExtResource("3_kdgex")]
 transform = Transform3D(-0.986589, -6.02897e-09, -0.163223, -4.36679e-09, 1, -1.05424e-08, 0.163223, -9.68821e-09, -0.986589, 84.7203, 0, 175.029)
 
-[node name="RockFormation13" parent="floor" instance=ExtResource("3_kdgex")]
+[node name="RockFormation13" parent="NavigationRegion" instance=ExtResource("3_kdgex")]
 transform = Transform3D(-0.835405, 0, -0.549635, 0, 1, 0, 0.549635, 0, -0.835405, 142.973, 0, 168.363)
 
-[node name="RockFormation14" parent="floor" instance=ExtResource("3_kdgex")]
+[node name="RockFormation14" parent="NavigationRegion" instance=ExtResource("3_kdgex")]
 transform = Transform3D(-0.869529, 0, -0.493881, 0, 1, 0, 0.493881, 0, -0.869529, 185.873, 0, 106.016)
 
-[node name="RockFormation15" parent="floor" instance=ExtResource("3_kdgex")]
+[node name="RockFormation15" parent="NavigationRegion" instance=ExtResource("3_kdgex")]
 transform = Transform3D(-0.343381, -1.14008e-08, -0.939196, -4.36679e-09, 1, -1.05424e-08, 0.939196, 4.81222e-10, -0.343381, 196.001, 0, 22.2851)
 
-[node name="RockFormation16" parent="floor" instance=ExtResource("3_kdgex")]
+[node name="RockFormation16" parent="NavigationRegion" instance=ExtResource("3_kdgex")]
 transform = Transform3D(0.0491808, 0, -0.99879, 0, 1, 0, 0.99879, 0, 0.0491808, 221.054, 0, -37.9176)
 
-[node name="RockFormation17" parent="floor" instance=ExtResource("3_kdgex")]
+[node name="RockFormation17" parent="NavigationRegion" instance=ExtResource("3_kdgex")]
 transform = Transform3D(-0.0161786, 0, -0.999869, 0, 1, 0, 0.999869, 0, -0.0161786, 189.136, 0, -106.538)
 
-[node name="RockFormation18" parent="floor" instance=ExtResource("3_kdgex")]
+[node name="RockFormation18" parent="NavigationRegion" instance=ExtResource("3_kdgex")]
 transform = Transform3D(0.63465, -5.37575e-09, -0.7728, -4.36679e-09, 1, -1.05424e-08, 0.7728, 1.00654e-08, 0.63465, 122.152, 0, -157.788)
 
-[node name="RockFormation19" parent="floor" instance=ExtResource("3_kdgex")]
+[node name="RockFormation19" parent="NavigationRegion" instance=ExtResource("3_kdgex")]
 transform = Transform3D(0.998202, 3.72709e-09, -0.0599336, -4.36679e-09, 1, -1.05424e-08, 0.0599336, 1.07851e-08, 0.998202, -38.3102, 0, -199.537)
 
-[node name="RockFormation20" parent="floor" instance=ExtResource("3_kdgex")]
+[node name="RockFormation20" parent="NavigationRegion" instance=ExtResource("3_kdgex")]
 transform = Transform3D(0.942839, 0, 0.333247, 0, 1, 0, -0.333247, 0, 0.942839, -103.167, 0, -206.293)
 
-[node name="RockFormation21" parent="floor" instance=ExtResource("3_kdgex")]
+[node name="RockFormation21" parent="NavigationRegion" instance=ExtResource("3_kdgex")]
 transform = Transform3D(0.962597, 0, 0.270936, 0, 1, 0, -0.270936, 0, 0.962597, -159.767, 0, -156.054)
 
-[node name="RockFormation22" parent="floor" instance=ExtResource("3_kdgex")]
+[node name="RockFormation22" parent="NavigationRegion" instance=ExtResource("3_kdgex")]
 transform = Transform3D(0.5586, 1.11835e-08, 0.829437, -4.36678e-09, 1, -1.05424e-08, -0.829437, 2.26698e-09, 0.5586, -189.68, 0, -77.1959)
 
-[node name="RockFormation23" parent="floor" instance=ExtResource("3_kdgex")]
+[node name="RockFormation23" parent="NavigationRegion" instance=ExtResource("3_kdgex")]
 transform = Transform3D(-0.815804, 2.53449e-09, 0.578328, -4.36678e-09, 1, -1.05424e-08, -0.578328, -1.11259e-08, -0.815804, 101.282, -1.90735e-05, 48.7179)
 
-[node name="RockFormation24" parent="floor" instance=ExtResource("3_kdgex")]
+[node name="RockFormation24" parent="NavigationRegion" instance=ExtResource("3_kdgex")]
 transform = Transform3D(-0.882324, 1.10876e-09, 0.470642, -4.36679e-09, 1, -1.05424e-08, -0.470642, -1.1357e-08, -0.882324, -68.8737, -1.52588e-05, 51.2793)
 
-[editable path="floor"]
+[editable path="Floor/floor"]

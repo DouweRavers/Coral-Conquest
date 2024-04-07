@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=3 uid="uid://br2nnxe5gw2m6"]
+
+[ext_resource type="Script" path="res://game/city/building_menu/BuilderMenu.cs" id="1_3la3i"]
+
+[node name="BuilderMenu" type="HBoxContainer"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -31.0
+offset_right = 109.0
+grow_vertical = 0
+size_flags_horizontal = 0
+script = ExtResource("1_3la3i")
+
+[node name="House" type="Button" parent="."]
+layout_mode = 2
+text = "House"
+
+[node name="Farm" type="Button" parent="."]
+layout_mode = 2
+text = "Farm"
+
+[node name="Woodcutter" type="Button" parent="."]
+layout_mode = 2
+text = "Woodcutter"
+
+[connection signal="button_down" from="House" to="." method="SelectBuilding" binds= ["House"]]
+[connection signal="button_down" from="Farm" to="." method="SelectBuilding" binds= ["Farm"]]
+[connection signal="button_down" from="Woodcutter" to="." method="SelectBuilding" binds= ["Woodcutter"]]

@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://voi5n8vpbbfx"]
+
+[ext_resource type="PackedScene" uid="uid://i1ujipcyipts" path="res://game/fish/citizen/villager/goldfish.glb" id="1_twu5w"]
+[ext_resource type="Material" uid="uid://dd4lud77yeg3a" path="res://vfx/underwater/water_caustics.tres" id="2_cognr"]
+[ext_resource type="Material" uid="uid://rclhamvn2v0f" path="res://game/fish/citizen/villager/materials/Goldfish_Fins.tres" id="2_kec3t"]
+
+[node name="Skin" instance=ExtResource("1_twu5w")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+
+[node name="Skeleton3D" parent="RootNode/Fish_Armature" index="0"]
+bones/0/rotation = Quaternion(-3.15279e-06, -3.15279e-06, 0.00370507, 0.999993)
+bones/0/scale = Vector3(1, 1, 1)
+bones/1/rotation = Quaternion(-0.0071657, 0.0615095, -0.00966934, 0.998034)
+bones/2/rotation = Quaternion(-3.12259e-06, -3.12232e-06, -0.0213659, 0.999772)
+bones/2/scale = Vector3(1, 1, 1)
+bones/3/rotation = Quaternion(-0.00794435, 0.00103095, -0.105963, 0.994338)
+bones/3/scale = Vector3(1, 1, 1)
+bones/4/rotation = Quaternion(0.00791878, 0.00105961, -0.132622, 0.991135)
+bones/4/scale = Vector3(1, 1, 1)
+bones/5/rotation = Quaternion(1.2183e-08, 1.85087e-08, -0.11135, 0.993781)
+
+[node name="Cube_001" parent="RootNode/Fish_Armature/Skeleton3D" index="0"]
+material_overlay = ExtResource("2_cognr")
+surface_material_override/0 = ExtResource("2_kec3t")
+
+[node name="Cube_025" parent="RootNode/Fish_Armature/Skeleton3D" index="1"]
+material_overlay = ExtResource("2_cognr")
+surface_material_override/0 = ExtResource("2_kec3t")

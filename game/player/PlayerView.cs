@@ -30,7 +30,7 @@ public partial class PlayerView : CharacterBody3D
     {
         var directionInput = (// Input direction
                 GlobalBasis.X * Input.GetAxis("move_left", "move_right") +
-                GlobalBasis.Y * Input.GetAxis("move_up", "move_down") +
+                GlobalBasis.Y * Input.GetAxis("move_down", "move_up") +
                 GlobalBasis.Z * Input.GetAxis("move_forward", "move_back")
             ).Normalized();
         var boostInput = Input.IsActionPressed("move_sprint") ? m_boostSpeedMultiplier : 1;

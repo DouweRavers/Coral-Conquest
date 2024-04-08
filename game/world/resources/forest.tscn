@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bqv05go3gem4b"]
 
-[ext_resource type="PackedScene" uid="uid://bhiutgc1kr3t0" path="res://game/world/resources/Tree.tscn" id="1_x0hy0"]
+[ext_resource type="PackedScene" uid="uid://bhiutgc1kr3t0" path="res://game/world/resources/tree.tscn" id="1_x0hy0"]
 
 [node name="Forest" type="Node3D"]
 

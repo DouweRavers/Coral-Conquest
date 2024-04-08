@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dk5xmgjqevs1r"]
 
-[ext_resource type="Texture2D" uid="uid://dvxfsj0mvlb6q" path="res://vfx/Indicator/shape.png" id="1_58jb4"]
+[ext_resource type="Texture2D" uid="uid://dvxfsj0mvlb6q" path="res://vfx/indicator/shape.png" id="1_58jb4"]
 
 [sub_resource type="Animation" id="Animation_eoora"]
 resource_name = "Circle"

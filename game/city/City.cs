@@ -8,7 +8,7 @@ public partial class City : Node
     {
         var constructionSide = ResourceLoader.Load<PackedScene>("res://game/city/buildings/construction_site.tscn").Instantiate<ConstructionSite>();
         GetNode("Buildings").AddChild(constructionSide);
-        constructionSide.SetConstruction(buildingType, 10); // make building dependant in future
+        constructionSide.SetConstruction(buildingType, buildingType == BuildingType.FORT ? 15 : 5);
         UpdateVisibilityRange();
         return constructionSide;
     }

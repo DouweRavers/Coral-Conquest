@@ -23,12 +23,17 @@ public partial class Citizen : Fish
         m_job = jobType switch
         {
             JobTypes.VILLAGER => null,
-            JobTypes.FARMER => new FarmJob(this, building),
-            JobTypes.WOODCUTTER => new WoodcutterJob(this, building),
-            JobTypes.BUILDER => new BuilderJob(this, building),
-            JobTypes.SOLDIER => new SoldierJob(this, building),
+            JobTypes.FARMER => new FarmJob(),
+            JobTypes.WOODCUTTER => new WoodcutterJob(),
+            JobTypes.BUILDER => new BuilderJob(),
+            JobTypes.SOLDIER => new SoldierJob(),
             _ => throw new System.Exception()
         };
+        if (m_job != null)
+        {
+            AddChild(m_job);
+            m_job.AssignJob(this, building);
+        }
         Reskin(jobType);
         if (jobType == JobTypes.SOLDIER) { Health = 25; AttackPoint = 6; }
     }
@@ -47,6 +52,7 @@ public partial class Citizen : Fish
 
     public override void _Process(double delta)
     {
+        base._Process(delta);
         m_job?.WorkProcess();
     }
 

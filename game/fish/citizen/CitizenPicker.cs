@@ -26,12 +26,11 @@ public partial class CitizenPicker : Picker
         Game.Instance.Player.SetDefaultPicker();
     }
 
-    protected override void OnPoint() => throw new System.NotImplementedException();
-
     private void OnFloorClick()
     {
         Game.Instance.Player.ShowWaypoint(GetCollisionPoint());
         Citizen.GoTo(GetCollisionPoint(), () => Game.Instance.Player.HideWaypoint());
+        Game.Instance.Player.GetNode<AudioStreamPlayer>("go").Play();
     }
 
     private void OnHouseClick(House house)
@@ -43,6 +42,7 @@ public partial class CitizenPicker : Picker
             Game.Instance.Player.HideWaypoint();
         });
         OnDeselect();
+        Game.Instance.Player.GetNode<AudioStreamPlayer>("target").Play();
     }
 
     private void OnWorkClick(Workplace workplace)
@@ -54,5 +54,6 @@ public partial class CitizenPicker : Picker
             Game.Instance.Player.HideWaypoint();
         });
         OnDeselect();
+        Game.Instance.Player.GetNode<AudioStreamPlayer>("target").Play();
     }
 }

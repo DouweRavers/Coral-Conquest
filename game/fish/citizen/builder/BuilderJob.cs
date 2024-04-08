@@ -3,7 +3,6 @@ public partial class BuilderJob : Job
     ConstructionSite m_targetConstruction;
     Lodge m_targetLodge;
     bool m_carringWood;
-    public BuilderJob(Citizen citizen, Workplace workplace) : base(citizen, workplace) { }
 
     public override void WorkProcess()
     {

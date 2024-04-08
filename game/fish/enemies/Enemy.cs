@@ -7,6 +7,7 @@ public partial class Enemy : Fish
 
     public override void _Process(double delta)
     {
+        base._Process(delta);
         if (!IsInstanceValid(m_target)) m_target = null;
         if (m_target == null)
         {

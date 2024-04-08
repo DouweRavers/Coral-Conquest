@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bwue5p6o52yn5"]
+[gd_scene load_steps=7 format=3 uid="uid://bwue5p6o52yn5"]
 
 [ext_resource type="Script" path="res://game/city/buildings/house/HouseMenu.cs" id="1_id83l"]
 [ext_resource type="PackedScene" uid="uid://c8p2biake8w7x" path="res://game/city/buildings/HUDs/CitizenViewer.tscn" id="2_etskc"]
+[ext_resource type="AudioStream" uid="uid://2hh7il0tww1n" path="res://audio/bong_001.ogg" id="3_qavhf"]
+[ext_resource type="AudioStream" uid="uid://cvtu6k6r472rp" path="res://audio/tick_004.ogg" id="4_lilcy"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h164a"]
 bg_color = Color(0.7, 0.653333, 0, 1)
@@ -104,5 +106,13 @@ theme_override_font_sizes/font_size = 25
 theme_override_styles/normal = SubResource("StyleBoxFlat_qgfad")
 text = "Add"
 
+[node name="Hover" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_qavhf")
+
+[node name="Click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_lilcy")
+
 [connection signal="button_down" from="Button" to="." method="queue_free"]
 [connection signal="button_down" from="Button2" to="." method="AddCitizen"]
+[connection signal="button_down" from="Button2" to="Click" method="play"]
+[connection signal="mouse_entered" from="Button2" to="Hover" method="play"]

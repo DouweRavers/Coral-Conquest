@@ -5,13 +5,11 @@ public abstract partial class Picker : RayCast3D
     const float m_length = 100f;
     protected abstract void OnSelect();
     protected abstract void OnDeselect();
-    protected abstract void OnPoint();
 
     public override void _UnhandledInput(InputEvent @event)
     {
         if (@event is not InputEventMouseButton mouseEvent) return;
-        if (mouseEvent.DoubleClick && mouseEvent.ButtonMask == MouseButtonMask.Left) OnPoint();
-        else if (mouseEvent.IsActionPressed("mouse_select")) OnSelect();
+        if (mouseEvent.IsActionPressed("mouse_select")) OnSelect();
         else if (mouseEvent.IsActionPressed("mouse_deselect")) OnDeselect();
     }
 

@@ -25,7 +25,12 @@ public partial class BuildingPicker : Picker
         AddChild(m_buildingTemplate);
     }
 
-    protected override void OnSelect() => m_buildingTemplate.Build();
+    protected override void OnSelect()
+    {
+        m_buildingTemplate.Build();
+        Game.Instance.Player.GetNode<AudioStreamPlayer>("build").Play();
+    }
+
     protected override void OnDeselect() => Game.Instance.Player.SetDefaultPicker();
 
     public override void _Process(double delta)
@@ -48,8 +53,10 @@ public partial class BuildingPicker : Picker
 
     private void ProcessInput()
     {
-        if (Input.IsActionJustPressed("building_rotate")) m_buildingTemplate.RotateY(Mathf.Pi / 4);
+        if (Input.IsActionJustPressed("building_rotate"))
+        {
+            m_buildingTemplate.RotateY(Mathf.Pi / 4);
+            Game.Instance.Player.GetNode<AudioStreamPlayer>("switch").Play();
+        }
     }
-
-    protected override void OnPoint() => throw new System.NotImplementedException();
 }

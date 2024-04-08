@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://br2nnxe5gw2m6"]
+[gd_scene load_steps=9 format=3 uid="uid://br2nnxe5gw2m6"]
 
 [ext_resource type="Script" path="res://game/city/building_menu/BuilderMenu.cs" id="1_3la3i"]
 [ext_resource type="Texture2D" uid="uid://depqtv3fy5g7n" path="res://game/city/building_menu/icons/Picture1.svg" id="2_gvyr6"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://bhi7763i74o3d" path="res://game/city/building_menu/icons/Picture2.svg" id="4_1vl3c"]
 [ext_resource type="Texture2D" uid="uid://dhk4eslu4mgs1" path="res://game/city/building_menu/icons/Picture3.svg" id="5_v8fxt"]
 [ext_resource type="Texture2D" uid="uid://77jggy8adv1r" path="res://game/city/building_menu/icons/Picture5.svg" id="6_rj15d"]
+[ext_resource type="AudioStream" uid="uid://2hh7il0tww1n" path="res://audio/bong_001.ogg" id="7_al3hb"]
+[ext_resource type="AudioStream" uid="uid://cvtu6k6r472rp" path="res://audio/tick_004.ogg" id="8_jxc5l"]
 
 [node name="BuilderMenu" type="HBoxContainer"]
 anchors_preset = 2
@@ -52,8 +54,24 @@ theme_override_font_sizes/font_size = 25
 text = "Fort"
 icon = ExtResource("6_rj15d")
 
+[node name="Hover" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_al3hb")
+
+[node name="Click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_jxc5l")
+
+[connection signal="button_down" from="House" to="Click" method="play"]
 [connection signal="button_down" from="House" to="." method="SelectBuilding" binds= ["House"]]
+[connection signal="mouse_entered" from="House" to="Hover" method="play"]
+[connection signal="button_down" from="Farm" to="Click" method="play"]
 [connection signal="button_down" from="Farm" to="." method="SelectBuilding" binds= ["Farm"]]
+[connection signal="mouse_entered" from="Farm" to="Hover" method="play"]
+[connection signal="button_down" from="Lodge" to="Click" method="play"]
 [connection signal="button_down" from="Lodge" to="." method="SelectBuilding" binds= ["Lodge"]]
+[connection signal="mouse_entered" from="Lodge" to="Hover" method="play"]
+[connection signal="button_down" from="ConstructionOffice2" to="Click" method="play"]
 [connection signal="button_down" from="ConstructionOffice2" to="." method="SelectBuilding" binds= ["ConstructionOffice"]]
+[connection signal="mouse_entered" from="ConstructionOffice2" to="Hover" method="play"]
+[connection signal="button_down" from="Fort" to="Click" method="play"]
 [connection signal="button_down" from="Fort" to="." method="SelectBuilding" binds= ["Fort"]]
+[connection signal="mouse_entered" from="Fort" to="Hover" method="play"]

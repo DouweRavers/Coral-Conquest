@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://game/city/buildings/fort/Fort.cs" id="1_fvqgc"]
 [ext_resource type="PackedScene" uid="uid://dkqdp8xieucbe" path="res://game/city/buildings/HUDs/buildinghud.tscn" id="2_jauaq"]
-[ext_resource type="PackedScene" uid="uid://dk5xmgjqevs1r" path="res://vfx/Indicator/indicator.tscn" id="3_nia5t"]
+[ext_resource type="PackedScene" uid="uid://dk5xmgjqevs1r" path="res://vfx/indicator/indicator.tscn" id="3_nia5t"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_p8fle"]
 size = Vector3(12, 10, 12)

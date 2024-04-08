@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://bhiutgc1kr3t0"]
 
 [ext_resource type="Script" path="res://game/world/resources/Tree.cs" id="1_byggc"]
-[ext_resource type="PackedScene" uid="uid://cdejy6sxinwh6" path="res://game/world/deco/Plants/CoralTree.tscn" id="1_j8wjy"]
-[ext_resource type="PackedScene" uid="uid://bsxqyj2ebltgo" path="res://game/world/deco/Plants/Plant2.tscn" id="1_kewy4"]
+[ext_resource type="PackedScene" uid="uid://cdejy6sxinwh6" path="res://game/world/deco/plants/CoralTree.tscn" id="1_j8wjy"]
+[ext_resource type="PackedScene" uid="uid://bsxqyj2ebltgo" path="res://game/world/deco/plants/Plant2.tscn" id="1_kewy4"]
 
 [sub_resource type="Animation" id="Animation_cw5jx"]
 length = 0.001

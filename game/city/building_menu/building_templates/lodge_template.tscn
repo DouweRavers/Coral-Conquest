@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cnckfo1w7liyl" path="res://game/city/buildings/lodge/Wood.glb" id="3_74485"]
 [ext_resource type="PackedScene" uid="uid://3kyv05jr8isx" path="res://game/city/buildings/lodge/Dock.glb" id="5_up4ji"]
 [ext_resource type="Material" uid="uid://b055hnuiux2ns" path="res://game/world/materials/floor.tres" id="6_eumbi"]
-[ext_resource type="Texture2D" uid="uid://dvxfsj0mvlb6q" path="res://vfx/Indicator/shape.png" id="7_8c2cu"]
+[ext_resource type="Texture2D" uid="uid://dvxfsj0mvlb6q" path="res://vfx/indicator/shape.png" id="7_8c2cu"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_tbeq8"]
 material = ExtResource("6_eumbi")

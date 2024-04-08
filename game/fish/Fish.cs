@@ -70,6 +70,8 @@ public abstract partial class Fish : CharacterBody3D
         if (Swimming) MovementProcess((float)delta);
     }
 
+
+
     protected virtual void Die()
     {
         GeneralAnimationStateMachine.Travel("Die");
@@ -80,10 +82,16 @@ public abstract partial class Fish : CharacterBody3D
 
     private void MovementProcess(float delta)
     {
-        if (Navigation.GetFinalPosition().DistanceTo(GlobalPosition) < 1f) { OnArrive(); return; }
+        if (Navigation.GetFinalPosition().DistanceTo(GlobalPosition) < 1f)
+        {
+            Velocity = Vector3.Zero;
+            OnArrive();
+            return;
+        }
         var nextPos = Navigation.GetNextPathPosition();
         var step = ToLocal(nextPos).Normalized();
-        Velocity = step * m_speed;
+        var variation = step.Cross(Vector3.Up).Normalized() * Random.Shared.NextSingle(); // stuck prevention
+        Velocity = step * m_speed + variation;
         MoveAndSlide();
 
         var visual = GetNode<Node3D>("Skin");

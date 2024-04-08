@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dxju0e20shta8" path="res://game/city/buildings/lodge/Large Bone.glb" id="2_1m8p6"]
 [ext_resource type="PackedScene" uid="uid://cnckfo1w7liyl" path="res://game/city/buildings/lodge/Wood.glb" id="3_0r30t"]
 [ext_resource type="PackedScene" uid="uid://3kyv05jr8isx" path="res://game/city/buildings/lodge/Dock.glb" id="5_voyas"]
-[ext_resource type="PackedScene" uid="uid://dk5xmgjqevs1r" path="res://vfx/Indicator/indicator.tscn" id="6_gdb3t"]
+[ext_resource type="PackedScene" uid="uid://dk5xmgjqevs1r" path="res://vfx/indicator/indicator.tscn" id="6_gdb3t"]
 [ext_resource type="Material" uid="uid://b055hnuiux2ns" path="res://game/world/materials/floor.tres" id="6_kvyy2"]
 [ext_resource type="PackedScene" uid="uid://dkqdp8xieucbe" path="res://game/city/buildings/HUDs/buildinghud.tscn" id="8_24efq"]
 

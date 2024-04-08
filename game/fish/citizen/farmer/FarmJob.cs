@@ -2,7 +2,6 @@ public partial class FarmJob : Job
 {
     bool m_carringFood;
 
-    public FarmJob(Citizen citizen, Workplace workplace) : base(citizen, workplace) { }
 
     public override void WorkProcess()
     {

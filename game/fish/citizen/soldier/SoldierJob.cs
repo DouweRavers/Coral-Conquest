@@ -2,7 +2,6 @@ public partial class SoldierJob : Job
 {
     Enemy m_target;
 
-    public SoldierJob(Citizen citizen, Workplace workplace) : base(citizen, workplace) { }
 
     public override void WorkProcess()
     {

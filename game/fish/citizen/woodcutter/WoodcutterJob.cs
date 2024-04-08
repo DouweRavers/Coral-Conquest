@@ -2,7 +2,6 @@ public partial class WoodcutterJob : Job
 {
     Tree m_targetTree;
     bool m_carringWood;
-    public WoodcutterJob(Citizen citizen, Workplace workplace) : base(citizen, workplace) { }
 
     public override void WorkProcess()
     {

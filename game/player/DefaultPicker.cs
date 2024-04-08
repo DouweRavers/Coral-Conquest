@@ -1,3 +1,5 @@
+using Godot;
+
 public partial class DefaultPicker : Picker
 {
     protected override void OnSelect()
@@ -5,9 +7,10 @@ public partial class DefaultPicker : Picker
         UpdateCast();
         var collider = GetCollider();
         if (collider is House house) house.OnSelect();
-        if (collider is Citizen citizen) citizen.OnSelect();
+        else if (collider is Citizen citizen) citizen.OnSelect();
+        else;
+        Game.Instance.Player.GetNode<AudioStreamPlayer>("select").Play();
     }
     protected override void OnDeselect() { }
 
-    protected override void OnPoint() => throw new System.NotImplementedException();
 }

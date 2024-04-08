@@ -6,6 +6,7 @@ public partial class House : Building
 {
     public List<Citizen> Inhabitants { get; private set; } = new();
     public int FoodStorage { get; private set; } = 10;
+    public override BuildingType Type { get; set; } = BuildingType.HOUSE;
 
     public void AddFood()
     {

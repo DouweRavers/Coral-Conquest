@@ -5,7 +5,7 @@ public partial class Minimap : VBoxContainer
     public override void _Process(double delta)
     {
         var overCam = GetNode<Node3D>("SubViewportContainer/SubViewport/Camera3D");
-        var playerCam = Game.Instance.Player.GetNode<Node3D>("PlayerView/PlayerCamera");
+        var playerCam = GetParent().GetNode<Node3D>("PlayerView/PlayerCamera");
         overCam.GlobalPosition = playerCam.GlobalPosition with { Y = 50 };
     }
 

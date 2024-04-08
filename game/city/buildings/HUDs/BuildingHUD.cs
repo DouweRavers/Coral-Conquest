@@ -12,6 +12,12 @@ public partial class BuildingHUD : Node3D
         GetNode<ProgressBar>("SubViewport/BuildingHUD/ProgressBar").AddThemeStyleboxOverride("fill", new StyleBoxFlat() { BgColor = m_color });
         GetNode<ProgressBar>("SubViewport/BuildingHUD/ProgressBar").MaxValue = m_maxStore;
     }
+
     public void UpdateCitizens(Citizen[] citizens, int maxCount) => GetNode<CitizenViewer>("SubViewport/BuildingHUD/CitizenViewer").ShowCitizens(citizens, maxCount);
     public void UpdateBar(int value) => GetNode<ProgressBar>("SubViewport/BuildingHUD/ProgressBar").Value = value;
+    public void SetMaxStore(int value)
+    {
+        m_maxStore = value;
+        GetNode<ProgressBar>("SubViewport/BuildingHUD/ProgressBar").MaxValue = m_maxStore;
+    }
 }

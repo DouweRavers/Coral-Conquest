@@ -6,4 +6,7 @@
     <EnableDynamicLoading>true</EnableDynamicLoading>
     <RootNamespace>CoralConquest</RootNamespace>
   </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="game\fish\citizen\NewFolder\" />
+  </ItemGroup>
 </Project>

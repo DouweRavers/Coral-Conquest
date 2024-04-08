@@ -3,8 +3,11 @@ using System;
 
 public abstract partial class Fish : CharacterBody3D
 {
-    [Export] protected float m_health = 10f;
-    [Export] protected float m_speed = 5f;
+    abstract protected int Health { get; set; }
+    abstract protected int AttackPoint { get; set; }
+
+    protected bool canAttack = true;
+    protected float m_speed = 5f;
     public bool Swimming { get; private set; }
     Action m_onArrive;
 
@@ -14,6 +17,27 @@ public abstract partial class Fish : CharacterBody3D
     AnimationNodeStateMachinePlayback GeneralAnimationStateMachine { get { return (AnimationNodeStateMachinePlayback)GetNode<AnimationTree>("AnimationTree").Get("parameters/playback"); } }
     #endregion
 
+    public int Attack()
+    {
+        if (!canAttack) return 0;
+        canAttack = false;
+        GetTree().CreateTimer(3f).Timeout += () => canAttack = true;
+
+        var hitpoint = Mathf.RoundToInt(AttackPoint * (Random.Shared.NextSingle() * 1f + 0.5f));
+        GeneralAnimationStateMachine.Travel("Attack");
+
+        var visual = new Label3D() { Text = "" + hitpoint, FontSize = 80, Billboard = BaseMaterial3D.BillboardModeEnum.Enabled };
+        AddChild(visual);
+        visual.Position = Vector3.Up * 2;
+        GetTree().CreateTimer(2).Timeout += () => visual.QueueFree();
+
+        return hitpoint;
+    }
+    public void Hit(int attack)
+    {
+        Health -= attack;
+        if (Health < 0) Die();
+    }
 
     public void GoTo(Vector3 position, Action onArrive = null)
     {
@@ -30,10 +54,29 @@ public abstract partial class Fish : CharacterBody3D
         m_onArrive?.Invoke();
     }
 
+    public override void _MouseEnter()
+    {
+
+        GetNode<Node3D>("HUD").Visible = true;
+    }
+
+    public override void _MouseExit()
+    {
+        GetNode<Node3D>("HUD").Visible = false;
+    }
+
     public override void _PhysicsProcess(double delta)
     {
         if (Swimming) MovementProcess((float)delta);
     }
+
+    protected virtual void Die()
+    {
+        GeneralAnimationStateMachine.Travel("Die");
+        ProcessMode = ProcessModeEnum.Disabled;
+        GetTree().CreateTimer(10f).Timeout += () => QueueFree();
+    }
+
 
     private void MovementProcess(float delta)
     {

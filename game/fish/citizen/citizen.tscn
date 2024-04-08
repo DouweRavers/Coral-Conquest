@@ -103,6 +103,8 @@ script = ExtResource("1_yj7nq")
 
 [node name="Navigation" type="NavigationAgent3D" parent="."]
 avoidance_enabled = true
+radius = 2.0
+neighbor_distance = 20.0
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 root_node = NodePath("../Skin")
@@ -118,12 +120,12 @@ shape = SubResource("SphereShape3D_o3vpk")
 transform = Transform3D(-0.3, 0, 2.62268e-08, 0, 0.3, 0, -2.62268e-08, 0, -0.3, 0, 0, 0)
 
 [node name="Skeleton3D" parent="Skin/RootNode/Fish_Armature" index="0"]
-bones/0/rotation = Quaternion(-2.89945e-06, -3.38284e-06, 0.037913, 0.999281)
-bones/1/rotation = Quaternion(-0.0046268, 0.0397158, 0.0217612, 0.998963)
-bones/2/rotation = Quaternion(-3.02672e-06, -3.21349e-06, 0.0103058, 0.999947)
-bones/3/rotation = Quaternion(-0.00799771, 7.27393e-05, -0.00746998, 0.99994)
-bones/4/rotation = Quaternion(0.00797009, 0.000554604, -0.0694139, 0.997556)
-bones/5/rotation = Quaternion(2.02257e-08, 1.56267e-08, -0.133555, 0.991041)
+bones/0/rotation = Quaternion(-2.9221e-06, -3.3633e-06, 0.0312024, 0.999513)
+bones/1/rotation = Quaternion(-0.00532575, 0.0457155, 0.0131201, 0.998854)
+bones/2/rotation = Quaternion(-3.05762e-06, -3.18409e-06, 0.000639608, 1)
+bones/3/rotation = Quaternion(-0.0079854, 0.000401351, -0.04124, 0.999117)
+bones/4/rotation = Quaternion(0.00794248, 0.000864261, -0.108172, 0.9941)
+bones/5/rotation = Quaternion(2.0735e-08, 1.49772e-08, -0.165571, 0.986198)
 
 [node name="HUD" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)

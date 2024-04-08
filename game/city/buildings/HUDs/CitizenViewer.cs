@@ -9,9 +9,10 @@ public partial class CitizenViewer : HBoxContainer
             var texture = ResourceLoader.Load<Texture2D>(i < citizens.Length ?
                 citizens[i].JobType switch
                 {
-                    Citizen.JobTypes.VILLAGER => "res://game/fish/citizen/pictures/goldfish.png",
-                    Citizen.JobTypes.FARMER => "res://game/fish/citizen/pictures/coralgrouper.png",
-                    Citizen.JobTypes.WOODCUTTER => "res://game/fish/citizen/pictures/swordfish.png",
+                    JobTypes.VILLAGER => "res://game/fish/citizen/pictures/goldfish.png",
+                    JobTypes.FARMER => "res://game/fish/citizen/pictures/coralgrouper.png",
+                    JobTypes.WOODCUTTER => "res://game/fish/citizen/pictures/swordfish.png",
+                    JobTypes.BUILDER => "res://game/fish/citizen/pictures/clownfish.png",
                     _ => "res://game/fish/citizen/pictures/no_fish.png"
                 }
                 : "res://game/fish/citizen/pictures/no_fish.png");

@@ -8,10 +8,10 @@
 	  "workingDirectory": ".",
 	  "nativeDebugging": true
 	},
-	"Godot Debug Citizen": {
+	"Godot Debug ConstructionOffice": {
 	  "commandName": "Executable",
 	  "executablePath": "D:\\Program Files\\Godot\\godot NET 4.2\\godot.windows.editor.x86_64.mono.exe",
-	  "commandLineArgs": "--upwards ./game/fish/citizen/citizen.tscn --verbose",
+	  "commandLineArgs": "--upwards ./game/city/buildings/construction_office/construction_office.tscn --verbose",
 	  "workingDirectory": ".",
 	  "nativeDebugging": true
 	}

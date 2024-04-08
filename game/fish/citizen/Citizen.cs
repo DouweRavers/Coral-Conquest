@@ -9,6 +9,9 @@ public partial class Citizen : Fish
 
     #region References
     AnimationTree AnimationTree { get { return GetNode<AnimationTree>("AnimationTree"); } }
+
+    protected override int Health { get; set; } = 10;
+    protected override int AttackPoint { get; set; } = 3;
     #endregion
 
     public void SetIndicator(bool enable) { GetNode<Node3D>("Indicator").Visible = enable; }
@@ -23,9 +26,11 @@ public partial class Citizen : Fish
             JobTypes.FARMER => new FarmJob(this, building),
             JobTypes.WOODCUTTER => new WoodcutterJob(this, building),
             JobTypes.BUILDER => new BuilderJob(this, building),
+            JobTypes.SOLDIER => new SoldierJob(this, building),
             _ => throw new System.Exception()
         };
         Reskin(jobType);
+        if (jobType == JobTypes.SOLDIER) { Health = 25; AttackPoint = 6; }
     }
 
     public void OnSelect()
@@ -45,15 +50,11 @@ public partial class Citizen : Fish
         m_job?.WorkProcess();
     }
 
-    public override void _MouseEnter()
+    protected override void Die()
     {
-
-        GetNode<Node3D>("HUD").Visible = true;
-    }
-
-    public override void _MouseExit()
-    {
-        GetNode<Node3D>("HUD").Visible = false;
+        Home.Inhabitants.Remove(this);
+        m_job?.Leave();
+        base.Die();
     }
 
     private void Reskin(JobTypes jobType)
@@ -64,6 +65,8 @@ public partial class Citizen : Fish
             JobTypes.VILLAGER => "res://game/fish/citizen/villager/villager.tscn",
             JobTypes.FARMER => "res://game/fish/citizen/farmer/farmer.tscn",
             JobTypes.WOODCUTTER => "res://game/fish/citizen/woodcutter/woodcutter.tscn",
+            JobTypes.BUILDER => "res://game/fish/citizen/builder/builder.tscn",
+            JobTypes.SOLDIER => "res://game/fish/citizen/soldier/soldier.tscn",
             _ => throw new System.Exception()
         }).Instantiate();
         AddChild(newSkin);

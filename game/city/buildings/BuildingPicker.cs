@@ -2,7 +2,6 @@ using Godot;
 
 public partial class BuildingPicker : Picker
 {
-    Workplace.BuildingType m_buildingType;
     BuildingTemplate m_buildingTemplate;
 
     public override void _Ready()
@@ -12,15 +11,16 @@ public partial class BuildingPicker : Picker
         SetCollisionMaskValue(2, true);
     }
 
-    public void SetBuilding(Workplace.BuildingType buildingType)
+    public void SetBuilding(BuildingType buildingType)
     {
-        m_buildingType = buildingType;
         m_buildingTemplate = ResourceLoader.Load<PackedScene>(buildingType switch
         {
-            Workplace.BuildingType.HOUSE => "res://game/city/building_menu/building_templates/house_template.tscn",
-            Workplace.BuildingType.FARM => "res://game/city/building_menu/building_templates/farm_template.tscn",
-            Workplace.BuildingType.WOODCUTTER => "res://game/city/building_menu/building_templates/woodcutter_template.tscn",
-            _ => ""
+            BuildingType.HOUSE => "res://game/city/building_menu/building_templates/house_template.tscn",
+            BuildingType.FARM => "res://game/city/building_menu/building_templates/farm_template.tscn",
+            BuildingType.LODGE => "res://game/city/building_menu/building_templates/lodge_template.tscn",
+            BuildingType.CONSTRUCTION_OFFICE => "res://game/city/building_menu/building_templates/construction_office_template.tscn",
+            BuildingType.FORT => "res://game/city/building_menu/building_templates/fort_template.tscn",
+            _ => throw new System.Exception()
         }).Instantiate<BuildingTemplate>();
         AddChild(m_buildingTemplate);
     }

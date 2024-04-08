@@ -91,5 +91,8 @@ blend_shape_mode = 0
 
 [node name="Skin" instance=ExtResource("1_ngsr7")]
 
+[node name="RootNode" parent="." index="0"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+
 [node name="Clownfish" parent="RootNode/Fish_Armature/Skeleton3D" index="0"]
 mesh = SubResource("ArrayMesh_nsbn7")

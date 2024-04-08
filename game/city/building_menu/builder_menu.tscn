@@ -1,6 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://br2nnxe5gw2m6"]
+[gd_scene load_steps=7 format=3 uid="uid://br2nnxe5gw2m6"]
 
 [ext_resource type="Script" path="res://game/city/building_menu/BuilderMenu.cs" id="1_3la3i"]
+[ext_resource type="Texture2D" uid="uid://depqtv3fy5g7n" path="res://game/city/building_menu/icons/Picture1.svg" id="2_gvyr6"]
+[ext_resource type="Texture2D" uid="uid://dbh1g18ofaaka" path="res://game/city/building_menu/icons/Picture4.svg" id="3_82d3h"]
+[ext_resource type="Texture2D" uid="uid://bhi7763i74o3d" path="res://game/city/building_menu/icons/Picture2.svg" id="4_1vl3c"]
+[ext_resource type="Texture2D" uid="uid://dhk4eslu4mgs1" path="res://game/city/building_menu/icons/Picture3.svg" id="5_v8fxt"]
+[ext_resource type="Texture2D" uid="uid://77jggy8adv1r" path="res://game/city/building_menu/icons/Picture5.svg" id="6_rj15d"]
 
 [node name="BuilderMenu" type="HBoxContainer"]
 anchors_preset = 2
@@ -14,16 +19,41 @@ script = ExtResource("1_3la3i")
 
 [node name="House" type="Button" parent="."]
 layout_mode = 2
+theme_override_constants/icon_max_width = 60
+theme_override_font_sizes/font_size = 25
 text = "House"
+icon = ExtResource("2_gvyr6")
 
 [node name="Farm" type="Button" parent="."]
 layout_mode = 2
+theme_override_constants/icon_max_width = 60
+theme_override_font_sizes/font_size = 25
 text = "Farm"
+icon = ExtResource("3_82d3h")
 
-[node name="Woodcutter" type="Button" parent="."]
+[node name="Lodge" type="Button" parent="."]
 layout_mode = 2
-text = "Woodcutter"
+theme_override_constants/icon_max_width = 60
+theme_override_font_sizes/font_size = 25
+text = "Lodge"
+icon = ExtResource("4_1vl3c")
+
+[node name="ConstructionOffice2" type="Button" parent="."]
+layout_mode = 2
+theme_override_constants/icon_max_width = 60
+theme_override_font_sizes/font_size = 25
+text = "Construction Office"
+icon = ExtResource("5_v8fxt")
+
+[node name="Fort" type="Button" parent="."]
+layout_mode = 2
+theme_override_constants/icon_max_width = 60
+theme_override_font_sizes/font_size = 25
+text = "Fort"
+icon = ExtResource("6_rj15d")
 
 [connection signal="button_down" from="House" to="." method="SelectBuilding" binds= ["House"]]
 [connection signal="button_down" from="Farm" to="." method="SelectBuilding" binds= ["Farm"]]
-[connection signal="button_down" from="Woodcutter" to="." method="SelectBuilding" binds= ["Woodcutter"]]
+[connection signal="button_down" from="Lodge" to="." method="SelectBuilding" binds= ["Lodge"]]
+[connection signal="button_down" from="ConstructionOffice2" to="." method="SelectBuilding" binds= ["ConstructionOffice"]]
+[connection signal="button_down" from="Fort" to="." method="SelectBuilding" binds= ["Fort"]]

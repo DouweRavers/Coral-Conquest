@@ -11,7 +11,7 @@
 script = ExtResource("1_w5irj")
 
 [node name="PlayerView" type="CharacterBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 10, 0)
+transform = Transform3D(-0.694658, 0.467174, -0.546991, 0, 0.760406, 0.649448, 0.71934, 0.451144, -0.528222, -6.27355, 17.4486, -6.05828)
 script = ExtResource("1_u8n4n")
 m_maxHeight = 30.0
 m_sensitivity = 0.005

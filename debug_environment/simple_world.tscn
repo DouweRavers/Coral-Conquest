@@ -1,4 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://bmaxka162il1m"]
+[gd_scene load_steps=8 format=3 uid="uid://cive3dhqcvm4m"]
+
+[ext_resource type="Script" path="res://game/world/World.cs" id="1_pdr2o"]
+[ext_resource type="PackedScene" uid="uid://bqv05go3gem4b" path="res://game/world/resources/forest.tscn" id="2_j7kxq"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_docf6"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -13,16 +16,13 @@ sky = SubResource("Sky_rqvkk")
 tonemap_mode = 2
 glow_enabled = true
 
-[sub_resource type="NavigationMesh" id="NavigationMesh_rwjdx"]
-vertices = PackedVector3Array(-49.5, 5.5, -49.5, -49.5, 5.5, 49.5, 49.5, 5.5, 49.5, 49.5, 5.5, -49.5)
-polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
-
-[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_64o5s"]
-
 [sub_resource type="PlaneMesh" id="PlaneMesh_7awwj"]
 size = Vector2(100, 100)
 
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_64o5s"]
+
 [node name="SimpleWorld" type="Node"]
+script = ExtResource("1_pdr2o")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866024, -0.433016, 0.250001, 0, 0.499998, 0.866026, -0.500003, 0.749999, -0.43301, 0, 0, 0)
@@ -31,14 +31,19 @@ shadow_enabled = true
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_x41r1")
 
-[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
-navigation_mesh = SubResource("NavigationMesh_rwjdx")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_7awwj")
+skeleton = NodePath("StaticBody3D")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D"]
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
 collision_layer = 3
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
 shape = SubResource("WorldBoundaryShape3D_64o5s")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D"]
-mesh = SubResource("PlaneMesh_7awwj")
+[node name="Resources" type="Node" parent="."]
+
+[node name="Forest" type="Node" parent="Resources"]
+
+[node name="Forest" parent="Resources/Forest" instance=ExtResource("2_j7kxq")]
+transform = Transform3D(-0.0901633, 0, 0.995927, 0, 1, 0, -0.995927, 0, -0.0901633, -34.5256, 0, 19.8986)

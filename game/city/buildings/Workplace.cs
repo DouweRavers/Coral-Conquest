@@ -30,9 +30,9 @@ public abstract partial class Workplace : Building
 
     public override void _MouseExit()
     {
+        GetNode<Node3D>("Indicator").Visible = false;
         base._MouseExit();
         if (Game.Instance.Player.PickerMode is not CitizenPicker) return;
-        GetNode<Node3D>("Indicator").Visible = false;
     }
 }
 

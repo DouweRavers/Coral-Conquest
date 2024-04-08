@@ -1,10 +1,9 @@
 using Godot;
 
-public enum BuildingType { HOUSE, FARM, LODGE, CONSTRUCTION_OFFICE, BARACKS }
+public enum BuildingType { HOUSE, FARM, LODGE, CONSTRUCTION_OFFICE, FORT, CONSTRUCTION_SITE }
 public abstract partial class Building : StaticBody3D
 {
-
-    [Export] public BuildingType Type { get; protected set; }
+    abstract public BuildingType Type { get; set; } // replace to actual type checking 
 
     public override void _MouseEnter()
     {

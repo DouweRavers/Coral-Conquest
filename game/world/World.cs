@@ -7,17 +7,28 @@ public partial class World : Node
     {
         var meshes = FindChildren("*", "MeshInstance3D");
         meshes.Cast<MeshInstance3D>().ToList().ForEach(mesh => mesh.VisibilityRangeEnd = 80f);
-        GD.Print(GetTreesInArea(Vector3.Zero, 100f));
     }
 
-    public Tree[] GetTreesInArea(Vector3 center, float radius)
+    public Tree GetTreeInArea(Vector3 center, float radius)
     {
         return GetNode("Resources/Forest")
             .FindChildren("Tree*")
             .Cast<Tree>()
-            .Where((t) =>
-            {
-                return center.DistanceTo(t.GlobalPosition) < radius;
-            }).ToArray();
+            .OrderBy((t) => center.DistanceTo(t.GlobalPosition))
+            .FirstOrDefault((t) => t.Cuttable, null);
+    }
+
+    internal Enemy GetClosestEnemy(Vector3 globalPosition)
+    {
+        return GetNode("Enemies")
+            .GetChildren()
+            .Cast<Enemy>()
+            .OrderBy((e) => globalPosition.DistanceSquaredTo(e.GlobalPosition))
+            .FirstOrDefault(defaultValue: null);
+    }
+
+    internal void RemoveEnemy(Enemy enemy)
+    {
+        GetNode("Enemies").RemoveChild(enemy);
     }
 }

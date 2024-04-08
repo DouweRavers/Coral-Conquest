@@ -1,0 +1,15 @@
+[gd_scene load_steps=5 format=3 uid="uid://cvs8aq0g5e8qv"]
+
+[ext_resource type="Script" path="res://game/Game.cs" id="1_f2vvh"]
+[ext_resource type="PackedScene" uid="uid://bxcso7cbkn013" path="res://game/player/player.tscn" id="2_nii8o"]
+[ext_resource type="PackedScene" uid="uid://cive3dhqcvm4m" path="res://debug_environment/simple_world.tscn" id="3_kxadk"]
+[ext_resource type="PackedScene" uid="uid://cpj78j5jdx6bo" path="res://game/city/city.tscn" id="6_jctfo"]
+
+[node name="Game" type="Node"]
+script = ExtResource("1_f2vvh")
+
+[node name="Player" parent="." instance=ExtResource("2_nii8o")]
+
+[node name="City" parent="." instance=ExtResource("6_jctfo")]
+
+[node name="World" parent="." instance=ExtResource("3_kxadk")]

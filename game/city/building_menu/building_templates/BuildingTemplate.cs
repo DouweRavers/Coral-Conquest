@@ -2,7 +2,7 @@ using Godot;
 
 public partial class BuildingTemplate : MeshInstance3D
 {
-    [Export] Workplace.BuildingType m_buildingType;
+    [Export] BuildingType m_buildingType;
     bool m_placeable;
 
     #region References
@@ -22,8 +22,9 @@ public partial class BuildingTemplate : MeshInstance3D
     public void Build()
     {
         if (!m_placeable) return;
-        var building = Game.Instance.City.AddBuilding(m_buildingType);
-        building.GlobalPosition = GlobalPosition;
-        building.GlobalRotation = GlobalRotation;
+        var constructionSite = Game.Instance.City.AddBuilding(m_buildingType);
+        constructionSite.GlobalPosition = GlobalPosition;
+        constructionSite.GlobalRotation = GlobalRotation;
+        constructionSite.CheckInitialOverwrite();
     }
 }

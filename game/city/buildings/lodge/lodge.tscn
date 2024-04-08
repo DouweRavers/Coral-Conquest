@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dkqdp8xieucbe" path="res://game/city/buildings/HUDs/buildinghud.tscn" id="8_24efq"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_y3e07"]
-size = Vector3(4.95071, 2.1239, 9)
+size = Vector3(4.95071, 3.24933, 11.0889)
 
 [sub_resource type="SphereMesh" id="SphereMesh_hvmkp"]
 material = ExtResource("6_kvyy2")
@@ -21,7 +21,7 @@ rings = 4
 script = ExtResource("1_xf8ko")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.128616, 1.0763, 1.5749)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.128616, 1.63901, 0.530466)
 shape = SubResource("BoxShape3D_y3e07")
 
 [node name="Visual" type="Node3D" parent="."]

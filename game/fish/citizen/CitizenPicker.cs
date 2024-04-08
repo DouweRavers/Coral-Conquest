@@ -12,6 +12,7 @@ public partial class CitizenPicker : Picker
 
     protected override void OnSelect()
     {
+        if (!IsInstanceValid(Citizen)) Game.Instance.Player.SetDefaultPicker();
         UpdateCast();
         if (GetCollider() is not CollisionObject3D collsionObject) return;
         if (collsionObject.GetCollisionLayerValue(2)) OnFloorClick();
@@ -38,9 +39,10 @@ public partial class CitizenPicker : Picker
         Game.Instance.Player.ShowWaypoint(house.GlobalPosition);
         Citizen.GoTo(house.GlobalPosition, () =>
         {
-            Citizen.SetJobType(Citizen.JobTypes.VILLAGER);
+            Citizen.SetJobType(JobTypes.VILLAGER);
             Game.Instance.Player.HideWaypoint();
         });
+        OnDeselect();
     }
 
     private void OnWorkClick(Workplace workplace)
@@ -51,5 +53,6 @@ public partial class CitizenPicker : Picker
             workplace.AddWorker(Citizen);
             Game.Instance.Player.HideWaypoint();
         });
+        OnDeselect();
     }
 }

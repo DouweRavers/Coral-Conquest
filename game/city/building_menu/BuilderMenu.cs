@@ -6,10 +6,12 @@ public partial class BuilderMenu : HBoxContainer
     {
         var buildingType = buildingName switch
         {
-            "House" => Workplace.BuildingType.HOUSE,
-            "Farm" => Workplace.BuildingType.FARM,
-            "Woodcutter" => Workplace.BuildingType.WOODCUTTER,
-            _ => Workplace.BuildingType.HOUSE
+            "House" => BuildingType.HOUSE,
+            "Farm" => BuildingType.FARM,
+            "Lodge" => BuildingType.LODGE,
+            "ConstructionOffice" => BuildingType.CONSTRUCTION_OFFICE,
+            "Fort" => BuildingType.FORT,
+            _ => throw new System.Exception()
         };
         Game.Instance.Player.SetBuildingPicker(buildingType);
     }

@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=3 uid="uid://c0wed1e33v2jq"]
+
+[ext_resource type="PackedScene" uid="uid://deh3dhjd8741x" path="res://game/fish/enemies/Shark.glb" id="1_bppnm"]
+
+[node name="Root Scene" instance=ExtResource("1_bppnm")]
+
+[node name="Skeleton3D" parent="RootNode/SharkArmature" index="0"]
+bones/0/scale = Vector3(1, 1, 1)
+bones/3/rotation = Quaternion(-0.0382159, 0.00191504, -0.0500117, 0.998015)
+bones/4/rotation = Quaternion(0.0282382, 0.00231493, -0.0479189, 0.998449)
+bones/5/rotation = Quaternion(-0.0128153, -0.000383205, 0.0116739, 0.99985)
+bones/5/scale = Vector3(1, 1, 1)
+bones/6/scale = Vector3(1, 1, 1)
+bones/7/rotation = Quaternion(0.0078934, -0.00199493, 0.0808183, 0.996696)
+bones/10/rotation = Quaternion(0.00445769, 0.0597323, 0.995422, 0.0744844)
+bones/10/scale = Vector3(1, 1, 0.999995)
+bones/11/rotation = Quaternion(0.0272236, -0.00146542, -0.00988948, 0.999579)
+bones/12/rotation = Quaternion(-0.0435084, -0.00481321, -0.0365916, 0.998371)
+bones/15/rotation = Quaternion(-0.194596, 0.000782919, -0.0361823, 0.980216)
+bones/15/scale = Vector3(1, 1, 1)
+bones/18/rotation = Quaternion(-0.132645, -0.13636, 0.807591, 0.558219)
+bones/18/scale = Vector3(1, 1, 1)
+bones/19/rotation = Quaternion(-0.0119085, -0.090143, 0.249845, 0.964007)
+bones/19/scale = Vector3(1, 1, 1)
+bones/22/rotation = Quaternion(-0.132643, 0.136358, -0.807591, 0.558219)
+bones/23/rotation = Quaternion(-0.011909, 0.0901432, -0.249845, 0.964007)
+bones/23/scale = Vector3(1, 1, 1)
